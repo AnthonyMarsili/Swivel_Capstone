@@ -191,37 +191,50 @@ textarea{
 }
 
 /* Landing - section 3 */
-.section3-header{
+.section-header{
   font-size: 35px;
   text-align: center;
   margin-top: 5%;
 }
 
 .steps {
-  width: 70%;
+  position: relative;
+  width: 80%;
   margin: auto;
+  margin-top: 10%;
+}
+
+.step{
+  display: flex;
 }
 
 .step-head {
-  display: inline-block;
+  display: inline;
   padding-left: 1%;
 }
 
 .step-body{
-  margin-top: -22px;
   font-size: 15px;
   padding-left: 4%;
-  width: 25%;
 }
 
-#step2 {
-  margin-left: 70%;
+.step-info{
+  width: 150%;
+}
+
+.title {
+  width: 200%;
 }
 
 #step2-body{
-  margin-top: -22px;
   font-size: 15px;
-  padding-left: 12%;
+  padding-right: 15%;
+  text-align: right;
+}
+
+.step-head2 {
+  display: inline;
+  margin-left: 10%;
 }
 
 #compStep {
@@ -232,4 +245,87 @@ textarea{
 #studStep {
   font-size: 28px;
   color: var(--student-main);
+}
+
+.line{
+  width: 120%;
+  margin-left: 50%;
+  margin-top: 50%;
+}
+
+.screenshot{
+  width: 60%;
+  margin-left: 35%;
+  margin-top: -5%;
+  margin-bottom: 15%;
+}
+
+#step2-line{
+  margin-left: -70%;
+}
+
+#step2-scrn{
+  margin-left: 0%;
+  margin-bottom: 25%;
+}
+
+/* Landing - section 4  */
+.review{
+  width: 30%;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 25px;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+.rev-from{
+  display: inline-block;
+}
+
+#stud-info{
+  margin-left: 5%;
+}
+
+.stud-school{
+  margin-top: -10%;
+  font-size: 14px;
+}
+
+#comp-review-from{
+  width: 20%;
+}
+
+#stud-review-from{
+  border: 1px solid white;
+  border-radius: 100%;
+  width: 20%;
+}
+
+#sec4-heading{
+  margin-top: 1%;
+}
+
+#section4{
+  background-color: #E9E9F0;
+  padding: 3%;
+}
+
+.top-quote{
+  width: 7%;
+  position: absolute;
+  margin-top: -5%;
+}
+
+.bottom-quote{
+  width: 7%;
+  margin-top: 28%;
+  transform: scaleX(-1) scaleY(-1);
+  float: right;
+}
+
+#stud-quote{
+  margin-top: 37%;
 }
