@@ -28,7 +28,7 @@ h1,h2,h3,h6{
 h4,h5,button{
     font-family: SofiaPro-Medium;
 }
-p,label{
+p,label, ul li{
     font-family: SofiaPro-Light;
     line-height: 1.6;
 }
@@ -45,10 +45,6 @@ section{
     padding-top: 2%;
     padding-bottom: 2%;
     height: auto;
-}
-ul li{
-  text-decoration: none;
-  font-family: SofiaPro-Medium;
 }
 input{
     font-family: SofiaPro-Light;
@@ -328,4 +324,99 @@ textarea{
 
 #stud-quote{
   margin-top: 37%;
+}
+
+/* landing - section 5 */
+.computer-outline{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 55%;
+}
+
+.sub-header{
+  text-align: center;
+}
+
+/* landing - section 6 (company version) */
+.background{
+  display: block;
+  position: relative;
+  width: 100%;
+  margin-top: 4%;
+}
+
+.section6-para {
+  position: absolute;
+  z-index: 100;
+  margin-top: -42%;
+  margin-left: 10%;
+}
+
+.para-div{
+  width: 45%;
+  display: inline-block;
+  padding: 2%;
+}
+
+.para-head{
+  color: white;
+}
+
+.para-body{
+  font-size: 14px;
+}
+
+/* Landing - section 6 (student version) */
+#sec6-header{
+  color: white;
+  position: absolute;
+  margin-left: 24%;
+  margin-top: -39%;
+}
+
+.stud-body{
+  color: white;
+}
+
+.stud-head{
+  font-size: 22px;
+}
+
+.stud-para{
+  margin-top: -35%;
+  margin-left: 10%;
+}
+
+.checkmarks{
+  color: white;
+  font-size: 14px;
+  list-style-type: none;
+}
+
+.check-item{
+  list-style-image: url('./images/check.png');
+}
+
+/* landing - section 7 */
+.features-table{
+  width: 80%;
+  margin: auto;
+  border: 1px solid #E9E9F0;
+  border-collapse: collapse;
+}
+
+.table-icon{
+  width: 15%;
+}
+
+.table-body{
+  font-size: 14px;
+}
+
+td {
+  text-align: center;
+  padding: 1.5%;
+  border: 1px solid #E9E9F0;
+  border-collapse: collapse;
 }
