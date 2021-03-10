@@ -3,6 +3,7 @@ import About from './components/About'
 import Resources from './components/Resources'
 import Landing from './components/Landing'
 import Login from './components/Login'
+import Footer from './components/Footer'
 
 import {Route} from 'react-router-dom'
 
@@ -19,6 +20,7 @@ function App() {
       <Route exact path="/about" component={About} />
       <Route exact path="/resources" component={Resources} />
       <Route exact path="/login" component={Login} />
+      <Footer />
     </div>
   )
 }

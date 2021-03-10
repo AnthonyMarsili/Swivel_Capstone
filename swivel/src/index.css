@@ -420,3 +420,87 @@ td {
   border: 1px solid #E9E9F0;
   border-collapse: collapse;
 }
+
+/* Landing - section 8 */
+.bottom-background{
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+#bottom-comp-img{
+  transform: scaleX(-1);
+}
+
+.bottom-head{
+  position: absolute;
+  color: var(--company-main);
+  font-size: 50px;
+  margin-left: 33%;
+  margin-top: -17%;
+}
+
+#bottom-stud-head{
+  color: var(--student-main);
+}
+
+#bottom-comp-btn{
+  top: initial;
+  left: initial;
+  margin-top: -10%;
+  margin-left: 45%;
+}
+
+/* landing - footer */
+.landing-footer{
+  background-color: #E9E9F0;
+  padding: 2%;
+  margin-top: 5px;
+  position: absolute;
+  width: 96%;
+}
+
+.footer-div{
+  display: inline-block;
+  margin: 3% 7%;
+}
+
+.company-info{
+  font-size: 12px;
+  margin-bottom: -5%;
+  width: 100%;
+  margin-left: 50%;
+}
+
+.copyright{
+  margin-top: 15%;
+}
+
+#footer-links-div{
+  margin-left: 30%;
+}
+
+.footer-links{
+  display: block;
+  font-family: SofiaPro-Light;
+  padding: 3%;
+  width: 100%;
+  font-size: 12px;
+  margin-left: 35%;
+}
+
+.footer-socials{
+  display: block;
+  padding-bottom: 10px;
+  font-family: SofiaPro-Light;
+  padding: 3%;
+  width: 100%;
+  font-size: 12px;
+  margin-left: 20%;
+}
+
+.socials-icon{
+  width: 15%;
+  padding-right: 20px;
+  margin-bottom: -3%;
+}

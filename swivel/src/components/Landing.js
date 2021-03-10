@@ -39,6 +39,7 @@ import compIcon4 from "../images/company/graph.png"
 import compIcon5 from "../images/company/matching.png"
 import compIcon6 from "../images/company/noti_bell.png"
 
+import bottom from "../images/bottom.png"
 
 import {Link} from 'react-router-dom'
 
@@ -105,9 +106,10 @@ const Landing = () => {
           Section4(sec4Heading, studQuote, rev1, studEx1, rev2, studEx2, "stud-review-from", rev1StudName, rev1StudSchool, rev2StudName, rev2StudSchool, "stud-quote"),
           Section5(computer, sec5SubHead),
           Section6Stud(studSec6),
-          Section7(studIcon1, table1Head, table1Body, studIcon2, table2Head, table2Body, 
+          Section7(studIcon1, table1Head, table1Body, studIcon2, table2Head, table2Body,
                     studIcon3, table3Head, table3Body, studIcon4, table4Head, table4Body,
-                    studIcon5, table5Head, table5Body, studIcon6, table6Head, table6Body)
+                    studIcon5, table5Head, table5Body, studIcon6, table6Head, table6Body),
+          Section8(bottom, "bottom-stud-img", "bottom-stud-head", "stud-join-btn", "bottom-comp-btn", "Join now.")
 
         ]
       } else {
@@ -167,7 +169,8 @@ const Landing = () => {
           Section6Comp(compSec6),
           Section7(compIcon1, table1Head, table1Body, compIcon2, table2Head, table2Body,
                     compIcon3, table3Head, table3Body, compIcon4, table4Head, table4Body,
-                    compIcon5, table5Head, table5Body, compIcon6, table6Head, table6Body)
+                    compIcon5, table5Head, table5Body, compIcon6, table6Head, table6Body),
+          Section8(bottom, "bottom-comp-img", "bottom-comp-head", "comp-join-btn", "bottom-comp-btn", "Try it free.")
         ]
       }
 }
@@ -407,10 +410,15 @@ const Section7 = (icon1, table1Head, table1Body, icon2, table2Head, table2Body,
   )
 }
 
-
-
-
-
+const Section8 = (bottomImage, bottomImgId, bottomHeadId, bottomBtnClass, bottomBtnId, btnContent) => {
+  return(
+    <div className="landing-info">
+      <img className="bottom-background" id={bottomImgId} src={bottomImage} alt="bottom"/>
+      <h1 className="bottom-head" id={bottomHeadId}>Start Swiveling today.</h1>
+      <Link className={bottomBtnClass} id={bottomBtnId} to="/login">{btnContent}</Link>
+    </div>
+  )
+}
 
 
 export default Landing
