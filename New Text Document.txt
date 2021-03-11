@@ -1,0 +1,238 @@
+Microsoft Windows [Version 10.0.18363.1379]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\TANGU>npm install -g @aws-amplify/cli
+npm WARN deprecated graphql-import@0.7.1: GraphQL Import has been deprecated and merged into GraphQL Tools, so it will no longer get updates. Use GraphQL Tools instead to stay up-to-date! Check out https://www.graphql-tools.com/docs/migration-from-import for migration and https://the-guild.dev/blog/graphql-tools-v6 for new changes.
+npm WARN deprecated @graphql-toolkit/common@0.9.7: GraphQL Toolkit is deprecated and merged into GraphQL Tools, so it will no longer get updates. Use GraphQL Tools instead to stay up-to-date! Check out https://www.graphql-tools.com/docs/migration-from-toolkit for migration and https://the-guild.dev/blog/graphql-tools-v6 for new changes.
+npm WARN deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+npm WARN deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+npm WARN deprecated core-js@2.6.12: core-js@<3 is no longer maintained and not recommended for usage due to the number of issues. Please, upgrade your dependencies to the actual version of core-js@3.
+npm WARN deprecated @graphql-toolkit/common@0.6.6: GraphQL Toolkit is deprecated and merged into GraphQL Tools, so it will no longer get updates. Use GraphQL Tools instead to stay up-to-date! Check out https://www.graphql-tools.com/docs/migration-from-toolkit for migration and https://the-guild.dev/blog/graphql-tools-v6 for new changes.
+npm WARN deprecated event-to-promise@0.8.0: Use promise-toolbox/fromEvent instead
+C:\Users\TANGU\AppData\Roaming\npm\amplify -> C:\Users\TANGU\AppData\Roaming\npm\node_modules\@aws-amplify\cli\bin\amplify
+
+> core-js@3.9.1 postinstall C:\Users\TANGU\AppData\Roaming\npm\node_modules\@aws-amplify\cli\node_modules\@aws-amplify\graphql-types-generator\node_modules\core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+Thank you for using core-js ( https://github.com/zloirock/core-js ) for polyfilling JavaScript standard library!
+
+The project needs your help! Please consider supporting of core-js on Open Collective or Patreon:
+> https://opencollective.com/core-js
+> https://www.patreon.com/zloirock
+
+Also, the author of core-js ( https://github.com/zloirock ) is looking for a good job -)
+
+
+> core-js@3.9.1 postinstall C:\Users\TANGU\AppData\Roaming\npm\node_modules\@aws-amplify\cli\node_modules\amplify-graphql-types-generator\node_modules\core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+
+> core-js@2.6.12 postinstall C:\Users\TANGU\AppData\Roaming\npm\node_modules\@aws-amplify\cli\node_modules\core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+
+> @aws-amplify/cli@4.44.2 postinstall C:\Users\TANGU\AppData\Roaming\npm\node_modules\@aws-amplify\cli
+> node scripts/post-install.js
+
+
+
+----------------------------------------
+Successfully installed the Amplify CLI
+----------------------------------------
+
+
+JavaScript Getting Started - https://docs.amplify.aws/start
+
+
+Android Getting Started - https://docs.amplify.aws/start/q/integration/android
+
+
+iOS Getting Started - https://docs.amplify.aws/start/q/integration/ios
+
+
+Flutter Getting Started - https://docs.amplify.aws/start/q/integration/flutter
+
+
+Amplify CLI collects anonymized usage data, which is used to help understand
+how to improve the product. If you don't wish to send anonymized Amplify CLI
+usage data to AWS, run amplify configure --usage-data-off  to opt-out.
+
+Learn more - https://docs.amplify.aws/cli/reference/usage-data
+
+
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@~2.3.1 (node_modules\@aws-amplify\cli\node_modules\chokidar\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ @aws-amplify/cli@4.44.2
+added 1208 packages from 731 contributors in 544.579s
+
+C:\Users\TANGU>amplify configure
+Initializing new Amplify CLI version...
+Done initializing new version.
+Scanning for plugins...
+Plugin scan successful
+Follow these steps to set up access to your AWS account:
+
+Sign in to your AWS administrator account:
+https://console.aws.amazon.com/
+Press Enter to continue
+
+Specify the AWS Region
+? region:  us-east-2
+Specify the username of the new IAM user:
+? user name:  amplify-RpNpy
+Complete the user creation using the AWS console
+https://console.aws.amazon.com/iam/home?region=us-east-2#/users$new?step=final&accessKey&userNames=amplify-RpNpy&permissionType=policies&policies=arn:aws:iam::aws:policy%2FAdministratorAccess
+Press Enter to continue
+
+Enter the access key of the newly created user:
+? accessKeyId:  ****************
+? secretAccessKey:  ****************
+This would update/create the AWS Profile in your local machine
+? Profile Name:  default
+
+Successfully set up the new user.
+
+C:\Users\TANGU>e:
+
+E:\>cd /swivel_capstone
+
+E:\Swivel_Capstone>cd /swivel
+The system cannot find the path specified.
+
+E:\Swivel_Capstone>cd ./swivel
+
+E:\Swivel_Capstone\swivel>npm start
+
+> swivel@0.1.0 start E:\Swivel_Capstone\swivel
+> react-scripts start
+
+'react-scripts' is not recognized as an internal or external command,
+operable program or batch file.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! swivel@0.1.0 start: `react-scripts start`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the swivel@0.1.0 start script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+npm WARN Local package.json exists, but node_modules missing, did you mean to install?
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\TANGU\AppData\Roaming\npm-cache\_logs\2021-03-02T20_28_08_380Z-debug.log
+
+E:\Swivel_Capstone\swivel>npm install aws-amplify @aws-amplify/ui-react
+
+> core-js@2.6.12 postinstall E:\Swivel_Capstone\swivel\node_modules\babel-runtime\node_modules\core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+Thank you for using core-js ( https://github.com/zloirock/core-js ) for polyfilling JavaScript standard library!
+
+The project needs your help! Please consider supporting of core-js on Open Collective or Patreon:
+> https://opencollective.com/core-js
+> https://www.patreon.com/zloirock
+
+Also, the author of core-js ( https://github.com/zloirock ) is looking for a good job -)
+
+
+> core-js@3.8.3 postinstall E:\Swivel_Capstone\swivel\node_modules\core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+
+> core-js-pure@3.8.3 postinstall E:\Swivel_Capstone\swivel\node_modules\core-js-pure
+> node -e "try{require('./postinstall')}catch(e){}"
+
+
+> ejs@2.7.4 postinstall E:\Swivel_Capstone\swivel\node_modules\ejs
+> node ./postinstall.js
+
+Thank you for installing EJS: built with the Jake JavaScript build tool (https://jakejs.com/)
+
+npm WARN react-native-get-random-values@1.6.0 requires a peer of react-native@>=0.56 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\webpack-dev-server\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules\watchpack-chokidar2\node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.1 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.1: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ @aws-amplify/ui-react@1.0.3
++ aws-amplify@3.3.21
+added 2134 packages from 1143 contributors and audited 2137 packages in 83.871s
+
+129 packages are looking for funding
+  run `npm fund` for details
+
+found 1 high severity vulnerability
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+E:\Swivel_Capstone\swivel>amplify pull
+? Select the authentication method you want to use: AWS profile
+
+For more information on AWS Profiles, see:
+https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html
+
+? Please choose the profile you want to use swivel_user
+? Which app are you working on? d366gly7pus096
+Backend environment 'dev' found. Initializing...
+? Choose your default editor: Visual Studio Code
+? Choose the type of app that you're building javascript
+Please tell us about your project
+? What javascript framework are you using react
+? Source Directory Path:  src
+? Distribution Directory Path: build
+? Build Command:  npm.cmd run-script build
+? Start Command: npm.cmd run-script start
+
+? Do you plan on modifying this backend? Yes
+√ Successfully pulled backend environment dev from the cloud.
+
+
+Successfully pulled backend environment dev from the cloud.
+Run 'amplify pull' to sync upstream changes.
+
+
+E:\Swivel_Capstone\swivel>npm start
+
+> swivel@0.1.0 start E:\Swivel_Capstone\swivel
+> react-scripts start
+
+i ｢wds｣: Project is running at http://192.168.0.112/
+i ｢wds｣: webpack output is served from
+i ｢wds｣: Content not from webpack is served from E:\Swivel_Capstone\swivel\public
+i ｢wds｣: 404s will fallback to /
+Starting the development server...
+Compiled successfully!
+
+You can now view swivel in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.0.112:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+Terminate batch job (Y/N)? y
+
+E:\Swivel_Capstone\swivel>amplify status
+
+Current Environment: dev
+
+| Category | Resource name  | Operation | Provider plugin   |
+| -------- | -------------- | --------- | ----------------- |
+| Hosting  | amplifyhosting | No Change | awscloudformation |
+| Auth     | swivelcbe412cb | No Change | awscloudformation |
+| Auth     | userPoolGroups | No Change | awscloudformation |
+| Api      | swivel         | No Change | awscloudformation |
+
+GraphQL endpoint: https://vt56zchuvvawvorcvprovahxye.appsync-api.us-east-2.amazonaws.com/graphql
+
+
+Amplify hosting urls:
+┌──────────────┬───────────────────────────────────────────┐
+│ FrontEnd Env │ Domain                                    │
+├──────────────┼───────────────────────────────────────────┤
+│ dev          │ https://dev.d366gly7pus096.amplifyapp.com │
+└──────────────┴───────────────────────────────────────────┘
+
+E:\Swivel_Capstone\swivel>

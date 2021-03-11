@@ -12,17 +12,17 @@ import awsconfig from './aws-exports'
 Amplify.configure(awsconfig)
 
 function App() {
-  return (
-    <div className="container">
-      <TopNav />
-      <Route exact path="/" component={Landing} />
-      <Route exact path="/students" component={Landing} />
-      <Route exact path="/about" component={About} />
-      <Route exact path="/resources" component={Resources} />
-      <Route exact path="/login" component={Login} />
-      <Footer />
-    </div>
-  )
+    return (
+      <div className="container">
+        <TopNav />
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/students" component={Landing} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/resources" component={Resources} />
+        <Route exact path="/login" component={Login} />
+        <Footer />
+      </div>
+    )
 }
 
 export default App
