@@ -1,7 +1,7 @@
 import {NavLink} from 'react-router-dom'
 import logo_full from '../images/Logo_Full.png'
 
-function TopNav(){
+function SignUpNav(){
     return(
       <div className='landing-nav'>
         <NavLink exact to="/" className="nav-btn-logo"><img className="nav-logo" src={logo_full} alt="Swivel_Logo" /></NavLink>
@@ -14,4 +14,4 @@ function TopNav(){
     );
 }
 
-export default TopNav;
+export default SignUpNav;

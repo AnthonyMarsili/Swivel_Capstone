@@ -86,11 +86,6 @@ textarea{
   padding: 0.3% 3.5%;
 }
 
-#sign-up{
-  color: red;
-  
-}
-
 #nav-login:hover{
   background-color: #00D8C6;
   border: 1px solid #00D8C6;
@@ -508,4 +503,67 @@ td {
   width: 15%;
   padding-right: 20px;
   margin-bottom: -3%;
+}
+
+/* Login - header */
+#sign-up{
+  color: red;
+  margin-right: 3%;
+}
+#sign-up-text{
+  margin-right: 1%;
+}
+
+/* Login - Login textbox */
+.login-subtitle {
+  color: black;
+  font-weight: bold;
+  position: absolute;
+  top: 30%;
+  left: 62%;
+  width: 40%;
+  font-size: 20px;
+}
+
+.login-img{
+  margin-top: 10%;
+  display: block;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.login-box {
+  float: right;
+  position: absolute;
+  left: 60%;
+  width: 25%;
+  height: 7%;
+}
+
+#username {
+  top: 45%;
+}
+
+#password{
+  top: 55%;
+}
+
+.login-btn {
+  color: white;
+  position: absolute;
+  background-color: var(--company-main);
+  padding: 0.7% 4%;
+  border: 1px solid var(--company-main);
+  border-radius: 5px;
+  top: 70%;
+  left: 65%;
+}
+
+.forgot-pass {
+  color: gray;
+  position: absolute;
+  top: 77%;
+  left: 67%;
+  font-size: 12px;
 }

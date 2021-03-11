@@ -13,8 +13,13 @@ const Login = () => {
 const Section1 = (heading, subtitle) => {
   return(
     <div className="landing-info">
-      <img className="landing-img1" src="../images/company/computer_outline.png" alt="heading_image"/>
+      <img className="login-img" src='../images/Logo_Full.png' alt="login image"/>
       <h1 className="comp-heading1"> {heading} </h1>
+      <p className="login-subtitle"> {subtitle} </p>
+      <input className = "login-box" type = "text" id = "username" placeholder = "Email"/>
+      <input className = "login-box" type = "text" id = "password" placeholder = "Password"/>
+      <Link className="login-btn" to="/login">Log In.</Link>
+      <Link className="forgot-pass" to="/resetpass">Forgot Password?</Link>
     </div>
   )
 }
