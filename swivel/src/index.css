@@ -505,7 +505,7 @@ td {
   margin-bottom: -3%;
 }
 
-/* Login - header */
+/* Login / Sign up - header */
 #sign-up{
   color: red;
   margin-right: 3%;
@@ -566,4 +566,41 @@ td {
   top: 77%;
   left: 67%;
   font-size: 12px;
+}
+
+/*Sign Up pages - content*/
+.review{
+  width: 30%;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 25px;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+.rev-from{
+  display: inline-block;
+}
+
+#signup-heading{
+  margin-top: 10%;
+}
+
+.signup-head{
+  font-size: 22px;
+}
+
+.signup-content{
+  font-size: 12px;
+}
+
+.signup-img{
+  padding-left: 30%;
+}
+
+#section4{
+  background-color: #E9E9F0;
+  padding: 3%;
 }

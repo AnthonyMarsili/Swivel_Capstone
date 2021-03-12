@@ -6,7 +6,6 @@ import Resources from './components/Resources'
 import Landing from './components/Landing'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
-import SignUp from './components/ResetPass'
 import Footer from './components/Footer'
 
 import {Route} from 'react-router-dom'
