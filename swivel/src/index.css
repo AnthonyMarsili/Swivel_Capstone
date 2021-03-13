@@ -569,8 +569,9 @@ td {
 }
 
 /*Sign Up pages - content*/
-.review{
+.signup-btn{
   width: 30%;
+  height: 100vh;
   display: inline-block;
   background-color: white;
   border: 1px solid white;
@@ -580,12 +581,8 @@ td {
   margin-top: 2%;
 }
 
-.rev-from{
-  display: inline-block;
-}
-
 #signup-heading{
-  margin-top: 10%;
+  margin-top: 15%;
 }
 
 .signup-head{
@@ -600,7 +597,70 @@ td {
   padding-left: 30%;
 }
 
-#section4{
+#sign-up-div{
   background-color: #E9E9F0;
   padding: 3%;
+}
+
+.signup-form{
+  width:30%;
+  height: 100vh;
+  display: none;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 25px;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+#firstname, #lastname{
+  top: 40%;
+  width: 12%;
+}
+#lastname{
+  left: 75%;
+}
+#company, #email, #newpass, #confirmpass{
+  top: 50%;
+  width: 27%;
+}
+#email{
+  top: 60%;
+}
+#newpass{
+  top: 70%;
+}
+#confirmpass{
+  top: 80%;
+}
+#join-btn{
+  top: 90%;
+}
+#linkedin{
+  top: 100%;
+  background-color: #E9E9F0;
+}
+/* Verification Page - Content*/
+.verification-box{
+  float: right;
+  position: relative;
+  left: 115%;
+  width: 8%;
+  margin-left: 4%;
+  top: 40%;
+  height: 7%;
+  font-size: 20px;
+}
+#verify-para{
+  float: right;
+  position: absolute;
+  left: 60%;
+  top: 40%;
+}
+#resend-para{
+  float: right;
+  position: absolute;
+  left: 60%;
+  top: 80%;
 }
