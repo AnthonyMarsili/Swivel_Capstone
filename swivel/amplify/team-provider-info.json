@@ -19,7 +19,10 @@
         }
       },
       "auth": {
+<<<<<<< HEAD
         "swivelcbe412cb": {},
+=======
+>>>>>>> 37771fc459e84e2c251ad819ab9ee815753e1b98
         "swiveld2a1c631": {}
       }
     }

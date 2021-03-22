@@ -184,7 +184,7 @@ const Section1 = ( image, info1Class, landingInfo1, landingInfo2, heading1Class,
           <p> {landingInfo1} </p>
           <p> {landingInfo2} </p>
         </div>
-        <Link className={btnClass} to="/login">Join Now</Link>
+        <Link className={btnClass} to="/signup">Join Now</Link>
       </div>
     )
 }
@@ -415,7 +415,7 @@ const Section8 = (bottomImage, bottomImgId, bottomHeadId, bottomBtnClass, bottom
     <div className="landing-info">
       <img className="bottom-background" id={bottomImgId} src={bottomImage} alt="bottom"/>
       <h1 className="bottom-head" id={bottomHeadId}>Start Swiveling today.</h1>
-      <Link className={bottomBtnClass} id={bottomBtnId} to="/login">{btnContent}</Link>
+      <Link className={bottomBtnClass} id={bottomBtnId} to="/signup">{btnContent}</Link>
     </div>
   )
 }
