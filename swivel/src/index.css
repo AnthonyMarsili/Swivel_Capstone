@@ -504,3 +504,235 @@ td {
   padding-right: 20px;
   margin-bottom: -3%;
 }
+
+/* Login / Sign up - header */
+#sign-up{
+  color: var(--student-main);
+  margin-right: 3%;
+}
+#sign-up-text{
+  margin-right: 1%;
+}
+
+/* Login - Login textbox */
+.login-subtitle {
+  color: black;
+  font-weight: bold;
+  position: absolute;
+  top: 31%;
+  margin-left: 62%;
+  font-size: 20px;
+}
+
+.login-img{
+  margin-top: 8%;
+  display: block;
+  position: relative;
+  width: 45%;
+  margin: 10% 5%;
+}
+
+.login-box {
+  float: right;
+  position: absolute;
+  left: 60%;
+  width: 25%;
+  height: 7%;
+  border: none;
+  border-bottom: 1px solid #E9E9F0;
+}
+
+#username {
+  top: 45%;
+}
+
+#password{
+  top: 55%;
+}
+
+.login-btn {
+  color: white;
+  position: absolute;
+  background-color: var(--company-main);
+  padding: 0.7% 4%;
+  border: 1px solid var(--company-main);
+  border-radius: 5px;
+  top: 70%;
+  left: 65%;
+}
+
+.forgot-pass {
+  color: gray;
+  position: absolute;
+  top: 77%;
+  left: 67%;
+  font-size: 12px;
+}
+
+/*Sign Up pages - content*/
+.signup-btn{
+  width: 30%;
+  height: 100%;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 0px 10px 20px #00000029;
+  padding: 25px;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+#signup-heading{
+  margin-top: 10%;
+}
+
+.signup-head{
+  font-size: 22px;
+  text-align: center;
+}
+
+.signup-content{
+  font-size: 17px;
+  text-align: center;
+}
+
+.signup-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#stud-signup-cont{
+  width: 85%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#company-signup-img{
+  width: 75%;
+}
+
+#student-signup-img{
+  width: 90%;
+  padding: 3%;
+}
+
+#comp-signup-head{
+  color: var(--company-main);
+}
+
+#stud-signup-head{
+  color: var(--student-main);
+}
+
+#signup-div{
+  margin-bottom: 10%;
+}
+
+.signup-form{
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding-bottom: 30%;
+}
+
+.signup-heading{
+  margin-top: 10%;
+  margin-left: 57%;
+}
+
+.signup-subhead{
+  margin-left: 60.5%;
+  font-weight: bold;
+}
+
+.final-signup-img{
+  width: 43%;
+  position: absolute;
+  margin-left: 5%;
+  margin-top: 15%;
+}
+
+/*#stud-subtitle{
+  top: 27%;
+}*/
+
+#firstname, #lastname{
+  top: 40%;
+  width: 12%;
+}
+#lastname{
+  left: 75%;
+}
+#company, #email, #newpass, #confirmpass{
+  top: 50%;
+  width: 27%;
+}
+#email{
+  top: 60%;
+}
+#newpass{
+  top: 70%;
+}
+#confirmpass{
+  top: 80%;
+}
+#ToS{
+  top: 89%;
+  width: 20px;
+  height: 20px;
+}
+#ToS-label{
+  margin-left: 63%;
+  margin-top: 24.4%;
+  position: absolute;
+  font-size: 14px;
+}
+#comp-join-btn{
+  top: 96%;
+  left: 67%;
+}
+#comp-join-btn:hover{
+  background-color: white;
+  color: var(--company-main);
+  cursor: pointer;
+}
+#stud-join-btn{
+  top: 96%;
+  left: 67%;
+  background-color: var(--student-main);
+  border-color: var(--student-main);
+}
+#stud-join-btn:hover{
+  background-color: white;
+  color: var(--student-main);
+  cursor: pointer;
+}
+
+
+
+/* Verification Page - Content*/
+.verification-box{
+  float: right;
+  position: relative;
+  left: 115%;
+  width: 8%;
+  margin-left: 4%;
+  top: 40%;
+  height: 7%;
+  font-size: 20px;
+}
+#verify-para{
+  float: right;
+  position: absolute;
+  left: 60%;
+  top: 40%;
+}
+#resend-para{
+  float: right;
+  position: absolute;
+  left: 60%;
+  top: 80%;
+}
