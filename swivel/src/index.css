@@ -736,3 +736,43 @@ td {
   left: 60%;
   top: 80%;
 }
+
+/* Side nav */
+.side-nav{
+  height: 100%;
+  width: 18%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  padding-top: 15px;
+}
+
+#comp-nav{
+  background-color: var(--company-main);
+}
+
+.side-nav-btn {
+  padding: 8px 8px 8px 15px;
+  font-size: 14px;
+  display: block;
+}
+
+#comp-nav-btn{
+  background-color: var(--company-main);
+}
+
+#comp-nav-btn:hover {
+  background-color: #04dbc9;
+}
+
+
+.side-nav-icon {
+  width: 10%;
+}
+
+.side-nav-label{
+  display: inline-block;
+  margin-left: 10px;
+  color: white
+}

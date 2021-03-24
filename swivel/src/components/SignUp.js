@@ -9,7 +9,7 @@ import logo_full from '../images/Logo_Full.png'
 import React, { useState, useEffect } from 'react'
 import { Auth, Hub } from 'aws-amplify'
 
-const initialForm = {firstName: '', lastName: '', organization: '', organizationEmail: '', password: '', confirmPassword: '', authCode1: '', authCode2: '', authCode3: '', authCode4: '', authCode5: '', authCode6: '', agree: true, formType: 'signUp'}
+const initialForm = {firstName: '', lastName: '', organization: '', organizationEmail: '', password: '', confirmPassword: '', authCode1: '', authCode2: '', authCode3: '', authCode4: '', authCode5: '', authCode6: '', agree: false, formType: 'signUp'}
 
 function SignUp() {
   const [form, updateForm] = useState(initialForm)
@@ -17,7 +17,12 @@ function SignUp() {
 
   function onChange(e) {
     e.persist()
-    updateForm(() => ({ ...form, [e.target.name]: e.target.value }))
+    if(e.target.name === 'agree') {
+      updateForm(() => ({ ...form, [e.target.name]: e.target.checked }))
+    }
+    else {
+      updateForm(() => ({ ...form, [e.target.name]: e.target.value }))
+    }
   }
 
   function studentOnClick(e) {
@@ -32,18 +37,22 @@ function SignUp() {
     updateSelection('')
   }
 
-  async function signUp() {
+  async function signUp() { // NEED MORE ERROR CHECKING HERE
     const username = form['organizationEmail']
     const password = form['password']
     const firstName = form['firstName']
     const lastName = form['lastName']
     const organization = form['organization']
+    const agree = form['agree']
     var student = '0'
     if(selection === 'student') {
       student = '1'
     }
     if(password !== form['confirmPassword']) {
       alert("Passwords do not match")
+    }
+    else if(agree === false) {
+      alert("Please agree to Terms and Conditions")
     }
     else {
       await Auth.signUp({ username, password, attributes: { 'custom:firstName': firstName, 'custom:lastName': lastName, 'custom:organization': organization, 'custom:student': student }})
@@ -108,7 +117,7 @@ function SignUp() {
             <input className = "login-box" type = "password" name = 'password' id = "newpass" onChange = {onChange} placeholder = "Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                   title="Must contain at least one number, one uppercase, one lowercase letter, and at least 8 or more characters" required/>
             <input className = "login-box" type = "password" name = 'confirmPassword' id = "confirmpass" onChange = {onChange} placeholder = "Confirm Password" required/>
-            <div><input className = "login-box" type = "checkbox" name = 'ToS' id = "ToS" onChange = {onChange}/>  <label id="ToS-label" htmlFor="ToS">I agree with terms and conditions.</label></div>
+            <div><input className = "login-box" type = "checkbox" name = 'agree' id = "ToS" onChange = {onChange}/>  <label id="ToS-label" htmlFor="agree">I agree with terms and conditions.</label></div>
             <button className="login-btn" id = "stud-join-btn"  onClick = {() => signUp()}>Join now.</button>
           </div>
         )
@@ -126,7 +135,7 @@ function SignUp() {
             <input className = "login-box" type = "password" name = 'password' id = "newpass" onChange = {onChange} placeholder = "Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                   title="Must contain at least one number, one uppercase, one lowercase letter, and at least 8 or more characters" required/>
             <input className = "login-box" type = "password" name = 'confirmPassword' id = "confirmpass" onChange = {onChange} placeholder = "Confirm Password" required/>
-            <div><input className = "login-box" type = "checkbox" name = 'ToS' id = "ToS" onChange = {onChange}/>  <label id="ToS-label" htmlFor="ToS">I agree with terms and conditions.</label></div>
+            <div><input className = "login-box" type = "checkbox" name = 'agree' id = "ToS" onChange = {onChange}/>  <label id="ToS-label" htmlFor="agree">I agree with terms and conditions.</label></div>
             <button className="login-btn" id = "comp-join-btn"  onClick = {() => signUp()}>Join now.</button>
           </div>
         )

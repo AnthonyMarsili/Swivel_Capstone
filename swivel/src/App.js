@@ -9,6 +9,12 @@ import SignUp from './components/SignUp'
 import Footer from './components/Footer'
 import ResetPass from './components/ResetPass'
 
+import SideNav from './components/SideNav'
+import Matching from './components/Matching'
+import Dashboard from './components/Dashboard'
+import Profile from './components/Profile'
+import Calendar from './components/Calendar'
+
 import {Route} from 'react-router-dom'
 
 import Amplify from 'aws-amplify'
@@ -31,6 +37,15 @@ function App() {
         <Footer />
       </div>
     )
+    /*return(
+      <div className="container">
+        <SideNav />
+        <Route exact path="/" component={Matching} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/calendar" component={Calendar} />
+      </div>
+    ) */
 }
 
 export default App
