@@ -71,12 +71,14 @@ function Login() {
             <h1 className="comp-heading1"> Take a moment to verify. </h1>
             <p className="login-subtitle"> Verification Code. </p>
             <p className="para-body" id = "verify-para"> We have sent a 6 digit code to your email. </p>
-            <input className = "verification-box" name = 'authCode6' onChange = {onChange} type="text" maxlength="1"/>
-            <input className = "verification-box" name = 'authCode5' onChange = {onChange} type="text" maxlength="1"/>
-            <input className = "verification-box" name = 'authCode4' onChange = {onChange} type="text" maxlength="1"/>
-            <input className = "verification-box" name = 'authCode3' onChange = {onChange} type="text" maxlength="1"/>
-            <input className = "verification-box" name = 'authCode2' onChange = {onChange} type="text" maxlength="1"/>
-            <input className = "verification-box" name = 'authCode1' onChange = {onChange} type="text" maxlength="1"/>
+            <div>
+              <input className = "verification-box" name = 'authCode6' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
+              <input className = "verification-box" name = 'authCode5' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
+              <input className = "verification-box" name = 'authCode4' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
+              <input className = "verification-box" name = 'authCode3' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
+              <input className = "verification-box" name = 'authCode2' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
+              <input className = "verification-box" name = 'authCode1' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
+            </div>
             <button className="login-btn" id = "submit-btn" onClick = {() => confirmSignUp()}>Submit</button>
             <p className="para-body" id="resend-para"> It may take a minute to receive your code. <br></br> Didn't receive a code. <a><u>Resend Mail</u></a></p>
           </div>
