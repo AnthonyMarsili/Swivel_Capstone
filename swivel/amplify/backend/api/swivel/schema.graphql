@@ -1,10 +1,9 @@
 type User @model {
 	id: ID!
-	student: Boolean
 	first_name: String!
 	last_name: String!
-	createdAt: AWSDateTime!
-	password: String!
+	verifiedAt: String!
+	initialSetupDone: Boolean
 	values: [String]
 	benefits: [String]
 	tech_skills: [String]

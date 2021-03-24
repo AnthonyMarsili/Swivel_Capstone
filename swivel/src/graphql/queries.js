@@ -5,11 +5,10 @@ export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
-      student
       first_name
       last_name
-      createdAt
-      password
+      verifiedAt
+      initialSetupDone
       values
       benefits
       tech_skills
@@ -38,6 +37,7 @@ export const getUser = /* GraphQL */ `
       special
       resume
       bio
+      createdAt
       updatedAt
     }
   }
@@ -51,11 +51,10 @@ export const listUsers = /* GraphQL */ `
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        student
         first_name
         last_name
-        createdAt
-        password
+        verifiedAt
+        initialSetupDone
         values
         benefits
         tech_skills
@@ -84,6 +83,7 @@ export const listUsers = /* GraphQL */ `
         special
         resume
         bio
+        createdAt
         updatedAt
       }
       nextToken

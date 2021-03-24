@@ -5,11 +5,10 @@ export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser {
     onCreateUser {
       id
-      student
       first_name
       last_name
-      createdAt
-      password
+      verifiedAt
+      initialSetupDone
       values
       benefits
       tech_skills
@@ -38,6 +37,7 @@ export const onCreateUser = /* GraphQL */ `
       special
       resume
       bio
+      createdAt
       updatedAt
     }
   }
@@ -46,11 +46,10 @@ export const onUpdateUser = /* GraphQL */ `
   subscription OnUpdateUser {
     onUpdateUser {
       id
-      student
       first_name
       last_name
-      createdAt
-      password
+      verifiedAt
+      initialSetupDone
       values
       benefits
       tech_skills
@@ -79,6 +78,7 @@ export const onUpdateUser = /* GraphQL */ `
       special
       resume
       bio
+      createdAt
       updatedAt
     }
   }
@@ -87,11 +87,10 @@ export const onDeleteUser = /* GraphQL */ `
   subscription OnDeleteUser {
     onDeleteUser {
       id
-      student
       first_name
       last_name
-      createdAt
-      password
+      verifiedAt
+      initialSetupDone
       values
       benefits
       tech_skills
@@ -120,6 +119,7 @@ export const onDeleteUser = /* GraphQL */ `
       special
       resume
       bio
+      createdAt
       updatedAt
     }
   }
