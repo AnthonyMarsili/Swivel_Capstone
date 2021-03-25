@@ -9,6 +9,7 @@ import SignUp from './components/SignUp'
 import Footer from './components/Footer'
 import ResetPass from './components/ResetPass'
 
+import MainNav from './components/MainNav'
 import SideNav from './components/SideNav'
 import Matching from './components/Matching'
 import Dashboard from './components/Dashboard'
@@ -39,13 +40,14 @@ function App() {
     )
     /*return(
       <div className="container">
+        <MainNav />
         <SideNav />
         <Route exact path="/" component={Matching} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/calendar" component={Calendar} />
       </div>
-    ) */
+    )*/
 }
 
 export default App
