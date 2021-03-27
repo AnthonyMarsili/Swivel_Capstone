@@ -8,8 +8,8 @@ export const createUser = /* GraphQL */ `
   ) {
     createUser(input: $input, condition: $condition) {
       id
-      first_name
-      last_name
+      firstName
+      lastName
       verifiedAt
       initialSetupDone
       values
@@ -52,8 +52,8 @@ export const updateUser = /* GraphQL */ `
   ) {
     updateUser(input: $input, condition: $condition) {
       id
-      first_name
-      last_name
+      firstName
+      lastName
       verifiedAt
       initialSetupDone
       values
@@ -96,8 +96,8 @@ export const deleteUser = /* GraphQL */ `
   ) {
     deleteUser(input: $input, condition: $condition) {
       id
-      first_name
-      last_name
+      firstName
+      lastName
       verifiedAt
       initialSetupDone
       values

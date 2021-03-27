@@ -1,7 +1,7 @@
 type User @model {
 	id: ID!
-	first_name: String!
-	last_name: String!
+	firstName: String!
+	lastName: String!
 	verifiedAt: String!
 	initialSetupDone: Boolean
 	values: [String]
@@ -32,6 +32,8 @@ type User @model {
 	special: String
 	resume: [String!]
 	bio: [String!]
+	createdAt: AWSDateTime
+	updatedAt: AWSDateTime
 }
 
 type Match @model {

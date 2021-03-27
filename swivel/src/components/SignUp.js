@@ -117,7 +117,7 @@ function SignUp() {
             <input className = "login-box" type = "password" name = 'password' id = "newpass" onChange = {onChange} placeholder = "Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                   title="Must contain at least one number, one uppercase, one lowercase letter, and at least 8 or more characters" required/>
             <input className = "login-box" type = "password" name = 'confirmPassword' id = "confirmpass" onChange = {onChange} placeholder = "Confirm Password" required/>
-            <div><input className = "login-box" type = "checkbox" name = 'agree' id = "ToS" onChange = {onChange}/>  <label id="ToS-label" htmlFor="ToS">I agree with terms and conditions.</label></div>
+            <div><input className = "login-box" type = "checkbox" name = 'agree' id = "ToS" onChange = {onChange}/>  <label id="ToS-label" htmlFor="agree">I agree with terms and conditions.</label></div>
             <button className="login-btn" id = "stud-join-btn"  onClick = {() => signUp()}>Join now.</button>
           </div>
         )
@@ -135,7 +135,7 @@ function SignUp() {
             <input className = "login-box" type = "password" name = 'password' id = "newpass" onChange = {onChange} placeholder = "Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                   title="Must contain at least one number, one uppercase, one lowercase letter, and at least 8 or more characters" required/>
             <input className = "login-box" type = "password" name = 'confirmPassword' id = "confirmpass" onChange = {onChange} placeholder = "Confirm Password" required/>
-            <div><input className = "login-box" type = "checkbox" name = 'agree' id = "ToS" onChange = {onChange}/>  <label id="ToS-label" htmlFor="ToS">I agree with terms and conditions.</label></div>
+            <div><input className = "login-box" type = "checkbox" name = 'agree' id = "ToS" onChange = {onChange}/>  <label id="ToS-label" htmlFor="agree">I agree with terms and conditions.</label></div>
             <button className="login-btn" id = "comp-join-btn"  onClick = {() => signUp()}>Join now.</button>
           </div>
         )
