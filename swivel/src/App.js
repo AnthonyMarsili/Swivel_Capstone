@@ -35,6 +35,7 @@ function App() {
         <Route exact path = '/signup' component = {SignUp} />
         <Route exact path = '/signup' component = {SignUpNav} />
         <Route exact path = '/resetpass' component = {ResetPass} />
+        <Route exact path = '/dashboard' component = {Dashboard} />
         <Footer />
       </div>
     )
