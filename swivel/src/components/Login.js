@@ -2,9 +2,10 @@
 //import { withAuthenticator } from 'aws-amplify-react';
 import LoginImg from "../images/loginimg.png"
 
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
-import { Auth, Hub } from 'aws-amplify'
+import Amplify, { API, Auth, Hub } from 'aws-amplify'
+import { getUser } from '../graphql/queries'
 
 const initialForm = {organizationEmail: '', password: '', authCode1: '', authCode2: '', authCode3: '',  authCode4: '', authCode5: '', authCode6: '', formType: 'signIn'}
 
@@ -23,7 +24,11 @@ function Login() {
       try {
         await Auth.signIn(username, password)
         console.log("signed in user")
-        updateForm(() => ({ ...form, formType: 'signedIn' }))
+        Auth.currentSession().then(response => {
+          var userID = response['idToken']['payload']['sub']
+          console.log(userID)
+          checkIfSetupDone(userID)
+        })
       }
       catch(err) {
         if(err.message === 'User is not confirmed.') {
@@ -39,14 +44,36 @@ function Login() {
       //updateForm(() => ({ ...form, formType: 'signedIn' })) // dont think this is needed
     }
 
+    async function getUserID() {
+      Auth.currentSession().then(response => {
+        return response['idToken']['payload']['sub']
+      })
+    }
+
+    async function checkIfSetupDone(userID) {
+      await API.graphql({ query: getUser, variables: {id: userID.toString()}}).then(response => {
+        if(response.data.getUser.initialSetupDone) {
+          updateForm(() => ({ ...form, formType: 'toDashboard' }))
+        }
+        else {
+          updateForm(() => ({ ...form, formType: 'toSetup' }))
+        }
+      })
+    }
+
     async function confirmSignUp() {
       const username = form['organizationEmail']
       const authCode = form['authCode1'] + form['authCode2'] + form['authCode3'] + form['authCode4'] + form['authCode5'] + form['authCode6']
       await Auth.confirmSignUp(username, authCode)
       console.log("confirmed user")
-      updateForm(() => ({ ...form, formType: 'signedIn' }))
+      updateForm(() => ({ ...form, formType: 'signIn' }))
       // NEED TO CATCH AN ERROR HERE
     }
+
+    //function showUser() {
+      //var test = Auth.currentSession()
+      //console.log(test)
+    //}
 
     const { formType } = form
 
@@ -85,11 +112,13 @@ function Login() {
         )
       }
       {
-        formType === 'signedIn' && (
-          <div>
-            <h1 className="comp-heading1"> YOU ARE NOW SIGNED IN </h1>
-            <p className="login-subtitle">Replace this section of the code with a redirect to the login dashboard. The current user is now in Auth.currentSession or Auth.currentUser</p>
-          </div>
+        formType === 'toSetup' && (
+          <Redirect to= '/setupProfile' />
+        )
+      }
+      {
+        formType === 'toDashboard' && (
+          <Redirect to= '/dashboard' />
         )
       }
 

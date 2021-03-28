@@ -5,8 +5,8 @@ export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
-      first_name
-      last_name
+      firstName
+      lastName
       verifiedAt
       initialSetupDone
       values
@@ -51,8 +51,8 @@ export const listUsers = /* GraphQL */ `
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        first_name
-        last_name
+        firstName
+        lastName
         verifiedAt
         initialSetupDone
         values
