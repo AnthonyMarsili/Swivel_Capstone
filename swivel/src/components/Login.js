@@ -1,6 +1,7 @@
 /* Matching for companies, should be the default page after login */
 //import { withAuthenticator } from 'aws-amplify-react';
 import LoginImg from "../images/loginimg.png"
+import VerifyImg from "../images/verificationCode.png"
 
 import {Link, Redirect} from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
@@ -82,7 +83,7 @@ function Login() {
       {
         formType === 'signIn' && (
           <div className="login-div">
-            <img className="login-img" src={LoginImg} alt="login image"/>
+            <img className="login-img" src={LoginImg} alt="login_image"/>
             <h1 className="comp-heading1">Welcome Back</h1>
             <p className="login-subtitle">Ready to Start swiveling?</p>
             <input className = "login-box" type = "text" id = "username" name = 'organizationEmail' onChange = {onChange} type = "text" placeholder = "Email"/>
@@ -95,10 +96,11 @@ function Login() {
       {
         formType === 'confirmSignUp' && (
           <div className="signup-form" id = "verify-form">
-            <h1 className="comp-heading1"> Take a moment to verify. </h1>
-            <p className="login-subtitle"> Verification Code. </p>
+            <img className="login-img" src={VerifyImg} alt="verify_image"/>
+            <h1 className="comp-heading1" id="verify-heading"> Take a moment to verify. </h1>
+            <p className="login-subtitle" id="verify-sub"> Verification Code. </p>
             <p className="para-body" id = "verify-para"> We have sent a 6 digit code to your email. </p>
-            <div>
+            <div className="verify-input">
               <input className = "verification-box" name = 'authCode6' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
               <input className = "verification-box" name = 'authCode5' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
               <input className = "verification-box" name = 'authCode4' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
