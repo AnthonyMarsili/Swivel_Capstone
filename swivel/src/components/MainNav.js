@@ -1,7 +1,8 @@
 import LogoFull from "../images/Logo_Full.png"
 import DropImg from "../images/dropdown.png"
+import DummyImg from "../images/student/student1.jpeg"
 
-import {NavLink} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 import { Auth, Hub } from 'aws-amplify'
 
 const SideNav = () => {
@@ -18,14 +19,15 @@ const SideNav = () => {
     // if user is a student id = stud-side else id comp-nav
     <div className="main-nav">
       <img className="nav-logo" id="main-nav-logo" src={LogoFull} alt="Swivel_Logo" />
+      <img className="nav-info" id="profile-pic" src={DummyImg} alt="profile-pic" />
+      <p className="nav-info" id="profile-name"> Placeholder Name </p>
       <div className="nav-dropdown">
-        <img className="profile-pic" src="" alt="profile-pic" />
-        <p className="profile-name"> Placeholder Name <img className="nav-drop-img" src={DropImg} alt="drop"/> </p>
+        <img className="nav-drop-img" src={DropImg} alt="drop"/>
         <div className="nav-dropdown-content">
-          <p className="dropdown-opt"> <b> Status: </b> Online </p>
+          <p className="dropdown-opt" id="status"><b> Status: </b> Online </p>
           <NavLink exact to="/profile" className="dropdown-opt"><p className="dropdown-opt">Account Settings</p></NavLink>
-          <NavLink exact to="https://forms.gle/Q1xkfrAP1bjLXDfW9" className="dropdown-opt"><p className="dropdown-opt">Feedback</p></NavLink>
-          <button className="dropdown-opt" onClick = {() => signOut()}>Log Out</button>
+          <a href="https://forms.gle/Q1xkfrAP1bjLXDfW9" className="dropdown-opt"><p className="dropdown-opt">Feedback</p></a>
+          <button className="dropdown-opt" id="dropdown-logout" onClick = {() => signOut()}>Log Out</button>
         </div>
       </div>
     </div>
