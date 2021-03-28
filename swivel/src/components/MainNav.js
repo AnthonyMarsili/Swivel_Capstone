@@ -2,7 +2,7 @@ import LogoFull from "../images/Logo_Full.png"
 import DropImg from "../images/dropdown.png"
 import DummyImg from "../images/student/student1.jpeg"
 
-import {NavLink} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 import { Auth, Hub } from 'aws-amplify'
 
 const SideNav = () => {
@@ -26,7 +26,7 @@ const SideNav = () => {
         <div className="nav-dropdown-content">
           <p className="dropdown-opt" id="status"><b> Status: </b> Online </p>
           <NavLink exact to="/profile" className="dropdown-opt"><p className="dropdown-opt">Account Settings</p></NavLink>
-          <NavLink exact to="https://forms.gle/Q1xkfrAP1bjLXDfW9" className="dropdown-opt"><p className="dropdown-opt">Feedback</p></NavLink>
+          <a href="https://forms.gle/Q1xkfrAP1bjLXDfW9" className="dropdown-opt"><p className="dropdown-opt">Feedback</p></a>
           <button className="dropdown-opt" id="dropdown-logout" onClick = {() => signOut()}>Log Out</button>
         </div>
       </div>

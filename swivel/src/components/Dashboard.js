@@ -1,5 +1,4 @@
 
-
 import React, { useState, useEffect } from 'react'
 import Amplify, { API, Auth, Hub } from 'aws-amplify'
 import {Link, Redirect} from 'react-router-dom'
@@ -32,9 +31,12 @@ const Dashboard = ( ) => {
     </div>
   )
   */
+
   return(
-    <div>
-      <h1> Dashboard </h1>
+    // put this under redirectToLogin === false
+    <div className = "dashboard-body">
+      <div>
+      </div>
     </div>
   )
 
