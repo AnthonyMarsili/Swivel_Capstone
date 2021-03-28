@@ -2,7 +2,7 @@
 import StudImg from "../images/student/student-signup.png"
 import CompImg from "../images/company/company-signup.png"
 import SignupImg from "../images/signupimg.png"
-
+import VerifyImg from "../images/verificationCode.png"
 
 import {NavLink, Link, Redirect, Prompt} from 'react-router-dom' // not using Prompt rn
 import logo_full from '../images/Logo_Full.png'
@@ -143,15 +143,18 @@ function SignUp() {
       {
         formType === 'confirmSignUp' && (
           <div className="signup-form" id = "verify-form">
-            <h1 className="comp-heading1"> Take a moment to verify. </h1>
-            <p className="login-subtitle"> Verification Code. </p>
+            <img className="login-img" src={VerifyImg} alt="verify_image"/>
+            <h1 className="comp-heading1" id="verify-heading"> Take a moment to verify. </h1>
+            <p className="login-subtitle" id="verify-sub"> Verification Code. </p>
             <p className="para-body" id = "verify-para"> We have sent a 6 digit code to your email. </p>
-            <input className = "verification-box" name = 'authCode6' onChange = {onChange} type="text" maxlength="1"/>
-            <input className = "verification-box" name = 'authCode5' onChange = {onChange} type="text" maxlength="1"/>
-            <input className = "verification-box" name = 'authCode4' onChange = {onChange} type="text" maxlength="1"/>
-            <input className = "verification-box" name = 'authCode3' onChange = {onChange} type="text" maxlength="1"/>
-            <input className = "verification-box" name = 'authCode2' onChange = {onChange} type="text" maxlength="1"/>
-            <input className = "verification-box" name = 'authCode1' onChange = {onChange} type="text" maxlength="1"/>
+            <div className="verify-input">
+              <input className = "verification-box" name = 'authCode6' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
+              <input className = "verification-box" name = 'authCode5' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
+              <input className = "verification-box" name = 'authCode4' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
+              <input className = "verification-box" name = 'authCode3' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
+              <input className = "verification-box" name = 'authCode2' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
+              <input className = "verification-box" name = 'authCode1' onChange = {onChange} type="text" inputmode = "numeric" maxlength="1"/>
+            </div>
             <button className="login-btn" id = "submit-btn" onClick = {() => confirmSignUp()}>Submit</button>
             <p className="para-body" id="resend-para"> It may take a minute to receive your code. <br></br> Didn't receive a code. <a><u>Resend Mail</u></a></p>
           </div>
