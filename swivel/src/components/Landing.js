@@ -41,6 +41,8 @@ import compIcon6 from "../images/company/noti_bell.png"
 
 import bottom from "../images/bottom.png"
 
+import TopNav from './TopNav'
+
 import {Link} from 'react-router-dom'
 
 
@@ -178,6 +180,7 @@ const Landing = () => {
 const Section1 = ( image, info1Class, landingInfo1, landingInfo2, heading1Class, landingHeading1, btnClass ) => {
     return(
       <div className="landing-info">
+        <TopNav />
         <img className="landing-img1" src={image} alt="heading_image"/>
         <h1 className={heading1Class}> {landingHeading1} </h1>
         <div className={info1Class}>
@@ -192,6 +195,7 @@ const Section1 = ( image, info1Class, landingInfo1, landingInfo2, heading1Class,
 const Section2 = ( image ) => {
   return(
     <div className="landing-info">
+      <TopNav />
       <img className="banner-img" src={image} alt="banner"/>
     </div>
   )
@@ -200,6 +204,7 @@ const Section2 = ( image ) => {
 const Section3 = ( sec3Heading, stepId, sec3p1Head, sec3p1, sec3p2Head, sec3p2, sec3p3Head, sec3p3, sec31Img, sec32Img, sec33Img, sec3L ) => {
   return(
     <div className="landing-info">
+      <TopNav />
       <h1 className="section-header">{sec3Heading}</h1>
       <div className="steps">
         <div className="step"  id="step1">
@@ -252,6 +257,7 @@ const Section4 = ( sec4Heading, quoteImg, rev1, rev1From, rev2, rev2From, review
 
   return(
     <div className="landing-info" id="section4">
+      <TopNav />
       <img className="top-quote" src={quoteImg} alt="quotes"/>
       <h1 className="section-header" id="sec4-heading"> {sec4Heading} </h1>
 
@@ -281,6 +287,7 @@ const Section4 = ( sec4Heading, quoteImg, rev1, rev1From, rev2, rev2From, review
 const Section5 = ( computer, sec5SubHead ) => {
   return(
     <div className="landing-info">
+      <TopNav />
       <h1 className="section-header">See Swivel in action.</h1>
       <p className="sub-header">{sec5SubHead}</p>
       <img className="computer-outline" src={computer} alt="mac" />
@@ -291,6 +298,7 @@ const Section5 = ( computer, sec5SubHead ) => {
 const Section6Comp = ( compSec6 ) => {
   return(
     <div className="landing-info">
+      <TopNav />
       <img className="background" src={compSec6} alt="blob" />
       <div className="section6-para">
         <div className="para-div">
@@ -331,6 +339,7 @@ const Section6Comp = ( compSec6 ) => {
 const Section6Stud = ( studSec6 ) => {
   return(
     <div className="landing-info">
+      <TopNav />
       <img className="background" src={studSec6} alt="blob" />
       <h1 className="section-header" id="sec6-header">Connecting you with new opportunities.</h1>
       <div className="section6-para stud-para">
@@ -368,6 +377,7 @@ const Section7 = (icon1, table1Head, table1Body, icon2, table2Head, table2Body,
                   icon5, table5Head, table5Body, icon6, table6Head, table6Body) => {
   return(
     <div className="landing-info">
+      <TopNav />
       <h1 className="section-header">Key Features</h1>
       <table className="features-table">
         <tr>
@@ -413,6 +423,7 @@ const Section7 = (icon1, table1Head, table1Body, icon2, table2Head, table2Body,
 const Section8 = (bottomImage, bottomImgId, bottomHeadId, bottomBtnClass, bottomBtnId, btnContent) => {
   return(
     <div className="landing-info">
+      <TopNav />
       <img className="bottom-background" id={bottomImgId} src={bottomImage} alt="bottom"/>
       <h1 className="bottom-head" id={bottomHeadId}>Start Swiveling today.</h1>
       <Link className={bottomBtnClass} id={bottomBtnId} to="/signup">{btnContent}</Link>
