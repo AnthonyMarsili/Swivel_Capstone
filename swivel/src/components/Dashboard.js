@@ -35,7 +35,7 @@ const Dashboard = ( ) => {
   return(
     // put this under redirectToLogin === false
     <div className = "dashboard-body">
-      <div>
+      <div className="connections-div">
       </div>
     </div>
   )
