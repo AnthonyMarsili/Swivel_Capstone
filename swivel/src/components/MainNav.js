@@ -3,9 +3,39 @@ import DropImg from "../images/dropdown.png"
 import DummyImg from "../images/student/student1.jpeg"
 
 import {NavLink, Link} from 'react-router-dom'
-import { Auth, Hub } from 'aws-amplify'
+import { API, Auth, Hub } from 'aws-amplify'
+import React, { useState, useEffect } from 'react'
+import { getUser } from '../graphql/queries'
+
+
+const defName = ""
 
 const SideNav = () => {
+  const [name, setName] = useState(defName)
+
+  useEffect(() => {
+    let isCancelled = false
+    Auth.currentSession()
+      .then(currUser => {
+        var userID = currUser['idToken']['payload']['sub']
+        getName(userID)
+        return () => {
+          isCancelled = true
+        }
+       })
+      .catch(err => {
+        console.log(err)
+      })
+  })
+
+  async function getName(userID) {
+    await API.graphql({ query: getUser, variables: {id: userID.toString() }}).then(response => {
+      var name = response.data.getUser.firstName + " " + response.data.getUser.lastName
+      setName(name)
+    }).catch(err => {
+      console.log(err);
+    });
+  }
 
   async function signOut() {
     try {
@@ -20,7 +50,7 @@ const SideNav = () => {
     <div className="main-nav">
       <img className="nav-logo" id="main-nav-logo" src={LogoFull} alt="Swivel_Logo" />
       <img className="nav-info" id="profile-pic" src={DummyImg} alt="profile-pic" />
-      <p className="nav-info" id="profile-name"> Placeholder Name </p>
+      <p className="nav-info" id="profile-name"> { name }</p>
       <div className="nav-dropdown">
         <img className="nav-drop-img" src={DropImg} alt="drop"/>
         <div className="nav-dropdown-content">

@@ -1,7 +1,10 @@
+import NoMatImg from "../images/nomatches.png"
+
 const NoMatches = ({ title }) => {
   return (
     <div className="tab-content">
-      <p> You have no {title} matches </p>
+      <p className="no-matches"> You currently have no {title} matches. Get swiping! </p>
+      <img className="no-matches-img" src={NoMatImg} alt="no_matches"/>
     </div>
   )
 }

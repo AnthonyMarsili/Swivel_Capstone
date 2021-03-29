@@ -946,6 +946,9 @@ td {
   margin-bottom: -1px;
   padding: 0.5rem 0.75rem;
 }
+.tab-list-item:hover {
+  cursor: pointer;
+}
 
 .tab-list-active {
   background-color: white;
@@ -985,4 +988,14 @@ td {
   text-align: left;
   border: 1px solid #E9E9F0;
   border-radius: 4px;
+}
+
+.no-matches-img{
+  width: 30%;
+  margin-left: 19%;
+}
+
+.no-matches{
+  margin-left: 17%;
+  color: #7a7a7a;
 }

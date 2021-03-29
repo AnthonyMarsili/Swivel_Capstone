@@ -7,13 +7,15 @@ import NoMatches from "./NoMatches"
 import React, { useState, useEffect } from 'react'
 import Amplify, { API, Auth, Hub } from 'aws-amplify'
 import {Link, Redirect} from 'react-router-dom'
-import { listMatchs } from '../graphql/queries'
+import { listMatchs, getUser } from '../graphql/queries'
 
 const matchList = {}
 
 const Dashboard = ( ) => {
   const [redirectToLogin, setRedirectToLogin] = useState(false)
-  const [matches, setMatches] = useState(matchList);
+  const [matches, setMatches] = useState(matchList)
+  // false = student, true = company
+  const [userType, setUserType] = useState(false)
 
   useEffect(() => {
     let isCancelled = false
@@ -21,6 +23,7 @@ const Dashboard = ( ) => {
       .then(currUser => {
         var userID = currUser['idToken']['payload']['sub']
         getMatches(userID)
+        //getUserType(userID)
         return () => {
           isCancelled = true
         }
@@ -39,6 +42,22 @@ const Dashboard = ( ) => {
       }
       else {
         setMatches(() => ({ ...matches, matches: response}))
+      }
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
+
+  // unsure how we're flagging student vs student
+  async function getUserType(userID){
+    await API.graphql({ query: getUser, variables: {id: userID.toString() }}).then(response => {
+      var type = response.data.getUser.__typename;
+      if(type == "Company" ){
+        setUserType(true)
+      }
+      else {
+        setUserType(false)
       }
     }).catch(err => {
       console.log(err);
@@ -76,7 +95,7 @@ const Dashboard = ( ) => {
                   <NoMatches title="archived" />
                 </div>
               </Tabs>
-            )
+              )
             }
               <Search />
             </div>
