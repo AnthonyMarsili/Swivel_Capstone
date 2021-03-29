@@ -999,3 +999,47 @@ td {
   margin-left: 17%;
   color: #7a7a7a;
 }
+
+/* Match box */
+.match-box{
+  display: inline-block;
+  width: 35%;
+}
+
+.student-match{
+  border: 2px solid #E9E9F0;
+  border-radius: 5px;
+  padding: 1%;
+  margin-right: 10%;
+}
+
+.zoom-meeting{
+  padding: 1%;
+}
+
+.meeting-content{
+  display: inline-block;
+}
+
+#meeting-time{
+  font-size: 14px;
+  padding: 2%;
+}
+
+#zoom-logo{
+  width: 7%;
+}
+
+#match-name{
+  font-weight: bold;
+}
+
+#match-school{
+  color: #a7a7a7;
+  font-size: 14px;
+}
+
+#match-major-degree{
+  color: #a7a7a7;
+  font-size: 14px;
+}
