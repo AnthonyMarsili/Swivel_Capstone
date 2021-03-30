@@ -40,6 +40,7 @@ export const onCreateUser = /* GraphQL */ `
       bio
       liked
       skipped
+      notSeen
       createdAt
       updatedAt
     }
@@ -84,6 +85,7 @@ export const onUpdateUser = /* GraphQL */ `
       bio
       liked
       skipped
+      notSeen
       createdAt
       updatedAt
     }
@@ -128,6 +130,7 @@ export const onDeleteUser = /* GraphQL */ `
       bio
       liked
       skipped
+      notSeen
       createdAt
       updatedAt
     }

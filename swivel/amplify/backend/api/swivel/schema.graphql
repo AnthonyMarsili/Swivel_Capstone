@@ -35,6 +35,7 @@ type User @model {
 	bio: [String!]
 	liked: [String]
 	skipped: [String]
+	notSeen: [String]
 	createdAt: AWSDateTime
 	updatedAt: AWSDateTime
 }

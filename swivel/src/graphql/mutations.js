@@ -43,6 +43,7 @@ export const createUser = /* GraphQL */ `
       bio
       liked
       skipped
+      notSeen
       createdAt
       updatedAt
     }
@@ -90,6 +91,7 @@ export const updateUser = /* GraphQL */ `
       bio
       liked
       skipped
+      notSeen
       createdAt
       updatedAt
     }
@@ -137,6 +139,7 @@ export const deleteUser = /* GraphQL */ `
       bio
       liked
       skipped
+      notSeen
       createdAt
       updatedAt
     }

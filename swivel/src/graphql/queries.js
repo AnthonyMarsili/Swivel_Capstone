@@ -40,6 +40,7 @@ export const getUser = /* GraphQL */ `
       bio
       liked
       skipped
+      notSeen
       createdAt
       updatedAt
     }
@@ -89,6 +90,7 @@ export const listUsers = /* GraphQL */ `
         bio
         liked
         skipped
+        notSeen
         createdAt
         updatedAt
       }
