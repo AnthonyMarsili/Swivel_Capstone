@@ -33,6 +33,8 @@ type User @model {
 	special: String
 	resume: [String!]
 	bio: [String!]
+	liked: [String]
+	skipped: [String]
 	createdAt: AWSDateTime
 	updatedAt: AWSDateTime
 }

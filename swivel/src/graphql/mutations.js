@@ -41,6 +41,8 @@ export const createUser = /* GraphQL */ `
       special
       resume
       bio
+      liked
+      skipped
       createdAt
       updatedAt
     }
@@ -86,6 +88,8 @@ export const updateUser = /* GraphQL */ `
       special
       resume
       bio
+      liked
+      skipped
       createdAt
       updatedAt
     }
@@ -131,6 +135,8 @@ export const deleteUser = /* GraphQL */ `
       special
       resume
       bio
+      liked
+      skipped
       createdAt
       updatedAt
     }

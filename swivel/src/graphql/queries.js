@@ -38,6 +38,8 @@ export const getUser = /* GraphQL */ `
       special
       resume
       bio
+      liked
+      skipped
       createdAt
       updatedAt
     }
@@ -85,6 +87,8 @@ export const listUsers = /* GraphQL */ `
         special
         resume
         bio
+        liked
+        skipped
         createdAt
         updatedAt
       }
