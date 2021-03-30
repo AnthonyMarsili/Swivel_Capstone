@@ -1043,3 +1043,45 @@ td {
   color: #a7a7a7;
   font-size: 14px;
 }
+
+/* setup flow */
+.setup-content{
+  height: 82%;
+  width: 76%;
+  margin-top: 10%;
+  margin-left: 21%;
+  background-color: white;
+  box-shadow: 0px 2px 6px #0000000A;
+  border-radius: 5px;
+}
+
+.slider{
+  width: 35%;
+  position: absolute;
+  left: 35%;
+}
+/*
+.slidecontainer{
+  
+}
+*/
+.sliderfront{
+  display: inline-block;
+  position: relative;
+  bottom: 20px;
+}
+.slider-zero{
+  display: inline-block;
+  position: absolute;
+  margin-left: 20px;
+}
+.sliderback{
+  margin-left: 60%; 
+  display: inline-block;
+  position: relative;
+  bottom: 20px;
+}
+.slidercounter{
+  position: absolute;
+  left: 80%;
+}
