@@ -42,17 +42,6 @@ function App() {
         <Route exact path="/setupProfile" component={SetupProfile} />
       </div>
     )
-    /*return(
-      <div className="container">
-        <MainNav />
-        <SideNav />
-        <Route exact path="/" component={Dashboard} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/matching" component={Matching} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/calendar" component={Calendar} />
-      </div>
-    )*/
 }
 
 export default App

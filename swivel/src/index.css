@@ -58,6 +58,8 @@ textarea{
     color: var(--company-main);
 }
 
+/* Landing nav */
+
 .landing-nav {
   overflow: hidden;
   background-color: white;
@@ -782,6 +784,10 @@ td {
   background-color: var(--company-main);
 }
 
+#stud-nav{
+  background-color: var(--student-main);
+}
+
 .side-nav-btn {
   padding: 8px 8px 8px 15px;
   font-size: 14px;
@@ -794,6 +800,14 @@ td {
 
 #comp-nav-btn:hover {
   background-color: #04dbc9;
+}
+
+#stud-nav-btn{
+  background-color: var(--student-main);
+}
+
+#stud-nav-btn:hover {
+  background-color: #fa6f6e;
 }
 
 .side-nav-icon {
@@ -1004,14 +1018,18 @@ td {
 .match-box{
   display: inline-block;
   width: 35%;
-}
-
-.student-match{
   border: 2px solid #E9E9F0;
   border-radius: 5px;
   padding: 1%;
   margin-right: 10%;
 }
+
+/*.student-match{
+  border: 2px solid #E9E9F0;
+  border-radius: 5px;
+  padding: 1%;
+  margin-right: 10%;
+}*/
 
 .zoom-meeting{
   padding: 1%;
@@ -1034,12 +1052,12 @@ td {
   font-weight: bold;
 }
 
-#match-school{
+#match-line2{
   color: #a7a7a7;
   font-size: 14px;
 }
 
-#match-major-degree{
+#match-line3{
   color: #a7a7a7;
   font-size: 14px;
 }
