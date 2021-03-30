@@ -5,6 +5,7 @@ export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser {
     onCreateUser {
       id
+      typeOfUser
       firstName
       lastName
       verifiedAt
@@ -37,6 +38,9 @@ export const onCreateUser = /* GraphQL */ `
       special
       resume
       bio
+      liked
+      skipped
+      notSeen
       createdAt
       updatedAt
     }
@@ -46,6 +50,7 @@ export const onUpdateUser = /* GraphQL */ `
   subscription OnUpdateUser {
     onUpdateUser {
       id
+      typeOfUser
       firstName
       lastName
       verifiedAt
@@ -78,6 +83,9 @@ export const onUpdateUser = /* GraphQL */ `
       special
       resume
       bio
+      liked
+      skipped
+      notSeen
       createdAt
       updatedAt
     }
@@ -87,6 +95,7 @@ export const onDeleteUser = /* GraphQL */ `
   subscription OnDeleteUser {
     onDeleteUser {
       id
+      typeOfUser
       firstName
       lastName
       verifiedAt
@@ -119,6 +128,9 @@ export const onDeleteUser = /* GraphQL */ `
       special
       resume
       bio
+      liked
+      skipped
+      notSeen
       createdAt
       updatedAt
     }
