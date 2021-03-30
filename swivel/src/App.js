@@ -14,7 +14,7 @@ import SideNav from './components/SideNav'
 import Matching from './components/Matching'
 import Dashboard from './components/Dashboard'
 import Profile from './components/Profile'
-import Calendar from './components/Calendar'
+import CalendarComponent from './components/Calendar'
 import SetupProfile from './components/SetupProfile'
 
 import {Route} from 'react-router-dom'
@@ -38,7 +38,7 @@ function App() {
         <Route exact path = '/dashboard' component = {Dashboard} />
         <Route exact path="/matching" component={Matching} />
         <Route exact path="/profile" component={Profile} />
-        <Route exact path="/calendar" component={Calendar} />
+        <Route exact path="/calendar" component={CalendarComponent} />
         <Route exact path="/setupProfile" component={SetupProfile} />
       </div>
     )

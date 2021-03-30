@@ -1043,3 +1043,9 @@ td {
   color: #a7a7a7;
   font-size: 14px;
 }
+
+#calendarOnScreen {
+  position: absolute;
+  left: 40%;
+  top: 25%;
+}

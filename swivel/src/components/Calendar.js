@@ -1,7 +1,9 @@
 import MainNav from './MainNav'
 import SideNav from './SideNav'
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css'
 
-const Calendar = ( ) => {
+const CalendarComponent = ( ) => {
   /*
   This is the component for the "calendar" on the side nav
    it should allow them to
@@ -10,14 +12,18 @@ const Calendar = ( ) => {
     - paint over times they are available
     - display any meetings they're going to have
 
-  The calendar is where you populate the "availabilities" field in the user. 
+  The calendar is where you populate the "availabilities" field in the user.
    */
   return (
     <div>
       <MainNav />
       <SideNav />
+      <div id = 'calendarOnScreen'>
+        <Calendar
+        />
+      </div>
     </div>
   )
 }
 
-export default Calendar
+export default CalendarComponent
