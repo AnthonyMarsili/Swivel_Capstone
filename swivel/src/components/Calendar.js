@@ -1,7 +1,7 @@
 import MainNav from './MainNav'
 import SideNav from './SideNav'
-import Calendar from 'react-calendar'
-import 'react-calendar/dist/Calendar.css'
+//import Calendar from 'react-calendar'
+//import 'react-calendar/dist/Calendar.css'
 
 const CalendarComponent = ( ) => {
   /*
@@ -19,8 +19,9 @@ const CalendarComponent = ( ) => {
       <MainNav />
       <SideNav />
       <div id = 'calendarOnScreen'>
-        <Calendar
-        />
+        {
+          /*<Calendar/>*/
+        }
       </div>
     </div>
   )

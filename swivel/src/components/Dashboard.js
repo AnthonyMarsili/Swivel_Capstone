@@ -18,18 +18,19 @@ const Dashboard = ( ) => {
   const [matches, setMatches] = useState(matchList)
 
   // false = student, true = company
-  //const [userType, setUserType] = useState(true)
+  const [userType, setUserType] = useState(true)
 
-  const userType = false
+//  const userType = false
 
   useEffect(() => {
     let isCancelled = false
     Auth.currentSession()
       .then(currUser => {
         var userID = currUser['idToken']['payload']['sub']
-        getMatches(userID)
-        //parseMatchType()
-
+          getUserType(userID).then(() => {
+            console.log(userType)
+            getMatches(userID, userType)
+          })
         return () => {
           isCancelled = true
         }
@@ -53,54 +54,84 @@ const Dashboard = ( ) => {
       })
   })
 
-  async function getMatches(userID){
+  async function getMatches(userID, type){
     var userid = userID.toString();
-    // if this works, have to add a thing for company vs student
-    await API.graphql({ query: listMatchs, variables: {company: userid}}).then(matchesInfo => {
-      var matchInfo = matchesInfo.data.listMatchs.items;
-      (async () => {
-      var allMatchesData = []
-      for(var key in matchInfo){
-        // user is a student and will view company match data
-        if(userType === false){
-          var matchID = matchInfo[key].company
-            var matchDetails = await getMatchInfo(matchID)
-            var userData = matchDetails.data.getUser
-            var matchData = matchInfo[key]
+    if(type === false){
+      // if this works, have to add a thing for company vs student
+      await API.graphql({ query: listMatchs, variables: {company: userid}}).then(matchesInfo => {
+        var matchInfo = matchesInfo.data.listMatchs.items;
+        (async () => {
+        var allMatchesData = []
+        for(var key in matchInfo){
+          // user is a student and will view company match data
+            var matchID = matchInfo[key].company
+              var matchDetails = await getMatchInfo(matchID)
+              var userData = matchDetails.data.getUser
+              var matchData = matchInfo[key]
 
-            var displayData = {
-              name: userData.firstName + " " + userData.lastName,
-              company: userData.organization,
-              position: userData.position,
-              loc: userData.located,
-              upcoming_meeting: matchData.upcoming_meeting,
-              messages: matchData.messages,
-              status_flag: matchData.status_flag
-            }
-            allMatchesData.push(displayData)
-        } else {
-          var matchID = matchInfo[key].student
-            var matchDetails = await getMatchInfo(matchID)
-            var userData = matchDetails.data.getUser
-            var matchData = matchInfo[key]
+              var displayData = {
+                name: userData.firstName + " " + userData.lastName,
+                company: userData.organization,
+                position: userData.position,
+                loc: userData.located,
+                upcoming_meeting: matchData.upcoming_meeting,
+                messages: matchData.messages,
+                status_flag: matchData.status_flag
+              }
+              allMatchesData.push(displayData)
+          }
+          setMatches(allMatchesData)
+        })()
+      }).catch(err => {
+        console.log(err)
+      })
+    } else {
+      console.log("company")
+      await API.graphql({ query: listMatchs, variables: {student: userid}}).then(matchesInfo => {
+        var matchInfo = matchesInfo.data.listMatchs.items;
+        (async () => {
+        var allMatchesData = []
+        for(var key in matchInfo){
+          // user is a company and will view student data
+            var matchID = matchInfo[key].student
+              var matchDetails = await getMatchInfo(matchID)
+              var userData = matchDetails.data.getUser
+              var matchData = matchInfo[key]
 
-            var displayData = {
-              name: userData.firstName + " " + userData.lastName,
-              school: userData.organization,
-              degree: userData.degree,
-              major: userData.major,
-              upcoming_meeting: matchData.upcoming_meeting,
-              messages: matchData.messages,
-              status_flag: matchData.status_flag
-            }
-            allMatchesData.push(displayData)
-        }
+              var displayData = {
+                name: userData.firstName + " " + userData.lastName,
+                school: userData.organization,
+                degree: userData.degree,
+                major: userData.major,
+                upcoming_meeting: matchData.upcoming_meeting,
+                messages: matchData.messages,
+                status_flag: matchData.status_flag
+              }
+              allMatchesData.push(displayData)
+          }
+          setMatches(allMatchesData)
+        })()
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+
+  }
+
+  // unsure how we're flagging student vs student
+  async function getUserType(userID){
+    await API.graphql({ query: getUser, variables: {id: userID.toString() }}).then(response => {
+      var type = response.data.getUser.typeOfUser;
+      if(type == "Company"){
+        setUserType(true)
       }
-        setMatches(allMatchesData)
-      })()
+      else {
+        setUserType(false)
+      }
     }).catch(err => {
-      console.log(err)
-    })
+      console.log(err);
+    });
+
   }
 
   async function getMatchInfo(matchID){
@@ -165,23 +196,6 @@ const Dashboard = ( ) => {
         <DashboardMatch userType={userType} matchType={matchType} name={name} line2={school} line3={degreeMaj} meeting={meeting}/>
     )
   }
-
-
-
-  // unsure how we're flagging student vs student
-  /*async function getUserType(userID){
-    await API.graphql({ query: getUser, variables: {id: userID.toString() }}).then(response => {
-      var type = response.data.getUser.__typename;
-      if(type == "Company" ){
-        setUserType(true)
-      }
-      else {
-        setUserType(false)
-      }
-    }).catch(err => {
-      console.log(err);
-    });
-  }*/
 
   return (
     <div className = "dashboard">
