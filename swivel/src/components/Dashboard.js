@@ -39,6 +39,20 @@ const Dashboard = ( ) => {
       })
   }, [])
 
+  useEffect(() => {
+    let isCancelled = false
+    Auth.currentSession()
+      .then(currUser => {
+      //  var userID = currUser['idToken']['payload']['sub']
+        return () => {
+          isCancelled = true
+        }
+       })
+      .catch(err => {
+        setRedirectToLogin(true)
+      })
+  })
+
   async function getMatches(userID){
     var userid = userID.toString();
     // if this works, have to add a thing for company vs student
