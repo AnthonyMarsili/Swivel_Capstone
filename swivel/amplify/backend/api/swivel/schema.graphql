@@ -1,5 +1,6 @@
 type User @model {
 	id: ID!
+	typeOfUser: String!
 	firstName: String!
 	lastName: String!
 	verifiedAt: String!
@@ -32,6 +33,9 @@ type User @model {
 	special: String
 	resume: [String!]
 	bio: [String!]
+	liked: [String]
+	skipped: [String]
+	notSeen: [String]
 	createdAt: AWSDateTime
 	updatedAt: AWSDateTime
 }

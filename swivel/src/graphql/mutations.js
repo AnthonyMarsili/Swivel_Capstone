@@ -8,6 +8,7 @@ export const createUser = /* GraphQL */ `
   ) {
     createUser(input: $input, condition: $condition) {
       id
+      typeOfUser
       firstName
       lastName
       verifiedAt
@@ -40,6 +41,9 @@ export const createUser = /* GraphQL */ `
       special
       resume
       bio
+      liked
+      skipped
+      notSeen
       createdAt
       updatedAt
     }
@@ -52,6 +56,7 @@ export const updateUser = /* GraphQL */ `
   ) {
     updateUser(input: $input, condition: $condition) {
       id
+      typeOfUser
       firstName
       lastName
       verifiedAt
@@ -84,6 +89,9 @@ export const updateUser = /* GraphQL */ `
       special
       resume
       bio
+      liked
+      skipped
+      notSeen
       createdAt
       updatedAt
     }
@@ -96,6 +104,7 @@ export const deleteUser = /* GraphQL */ `
   ) {
     deleteUser(input: $input, condition: $condition) {
       id
+      typeOfUser
       firstName
       lastName
       verifiedAt
@@ -128,6 +137,9 @@ export const deleteUser = /* GraphQL */ `
       special
       resume
       bio
+      liked
+      skipped
+      notSeen
       createdAt
       updatedAt
     }

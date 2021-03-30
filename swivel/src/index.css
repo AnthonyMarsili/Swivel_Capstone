@@ -912,3 +912,140 @@ td {
   box-shadow: 0px 2px 6px #0000000A;
   border-radius: 5px;
 }
+
+.dashboard-title{
+  font-size: 20px;
+  padding-top: 2%;
+  margin-left: 5%;
+  z-index: 5;
+  position: relative;
+}
+
+.connections-content{
+  position: absolute;
+  display: inline-block;
+}
+
+.connections-elem{
+  width: 100%;
+}
+
+.tab-list {
+  padding-left: 3%;
+  margin-top: -2%;
+  z-index: 4;
+}
+
+.tab-label{
+  margin-bottom: -2%;
+}
+
+.tab-list-item {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: -1px;
+  padding: 0.5rem 0.75rem;
+}
+.tab-list-item:hover {
+  cursor: pointer;
+}
+
+.tab-list-active {
+  background-color: white;
+  border: solid var(--company-main);
+  border-width: 0 0 2px 0;
+}
+
+.tab-content{
+  padding-left: 2%;
+}
+
+#tabs{
+  width: 100%;
+}
+
+#search-bar-div{
+  width: 35%;
+  margin-left: 35%;
+  margin-top: -1.5%;
+}
+
+.search-bar{
+  width: 100%;
+  margin-bottom: 10px;
+  margin-left: 10%;
+}
+
+.search-icon{
+  position: absolute;
+  padding: 8px;
+  width: 4%;
+}
+
+.search-input{
+  width: 60%;
+  padding: 10px 35px;
+  text-align: left;
+  border: 1px solid #E9E9F0;
+  border-radius: 4px;
+}
+
+.no-matches-img{
+  width: 30%;
+  margin-left: 19%;
+}
+
+.no-matches{
+  margin-left: 17%;
+  color: #7a7a7a;
+}
+
+/* Match box */
+.match-box{
+  display: inline-block;
+  width: 35%;
+}
+
+.student-match{
+  border: 2px solid #E9E9F0;
+  border-radius: 5px;
+  padding: 1%;
+  margin-right: 10%;
+}
+
+.zoom-meeting{
+  padding: 1%;
+}
+
+.meeting-content{
+  display: inline-block;
+}
+
+#meeting-time{
+  font-size: 14px;
+  padding: 2%;
+}
+
+#zoom-logo{
+  width: 7%;
+}
+
+#match-name{
+  font-weight: bold;
+}
+
+#match-school{
+  color: #a7a7a7;
+  font-size: 14px;
+}
+
+#match-major-degree{
+  color: #a7a7a7;
+  font-size: 14px;
+}
+
+#calendarOnScreen {
+  position: absolute;
+  left: 40%;
+  top: 25%;
+}
