@@ -1211,15 +1211,15 @@ hr{
   float: right;
   position: absolute;
   height: 15%;
-  right: 35%;
-  top: 52%;
+  right: 33.5%;
+  top: 53%;
 }
 #location-box {
   float: right;
   font-size: 20px;
-  right: 22.5%;
-  margin-right: 20%;
+  margin-right:20%;
   width: 40%;
+  z-index: 1;
 }
 .setup-next{
   float:right;
@@ -1253,7 +1253,7 @@ hr{
   color:white
 }
 #slidertop{
-  margin-bottom: 50px;
+  margin-bottom: 80px;
 }
 .slider{
   -webkit-appearance: none;
@@ -1276,7 +1276,7 @@ hr{
   background: var(--company-main);
 }
 .slidecontainer{
-  margin-top: 10px;
+  margin-top: 30px;
 }
 .slidercounter{
   font-weight: bold;
@@ -1291,6 +1291,31 @@ hr{
   position: relative;
   bottom: 27px;
   font-weight: bold;
+}
+.slider-bubble{
+  position: absolute;
+  margin-top: -120px;
+  color:white;
+  font-weight: bold;
+  font-family: SofiaPro-Light;
+  background-color: var(--company-main);
+  width:20px;
+  height:20px;
+  padding:8px;
+  border-radius: 50%;
+  text-align: center;
+  pointer-events: none
+}
+.slider-bubble:after{
+  content: "";
+  position: absolute;
+  background-color: var(--company-main);
+  left: 15px;
+  margin-top: 25px;
+  height: 30px;
+  width: 5px;
+  border-top: 20px;
+  border-top-color: inherit;
 }
 .slider-zero{
   position: absolute;

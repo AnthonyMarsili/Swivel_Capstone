@@ -1,28 +1,49 @@
 import {Link, Redirect} from 'react-router-dom'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {NavLink} from 'react-router-dom'
 import logo_full from '../images/Logo_Full.png'
 
 const initialForm = {formType: 'signUp'}
-const sliderdata = ['slider1', 'slider2', 'slider3']
-const SetupProfile = ( ) => {
+const SetupProfile = () => {
   const [form, updateForm] = useState(initialForm)
   const [selection, updateSelection] = useState('')
-
-  function onChange(e) {
-    e.persist()
-    if(e.target.name === 'agree') {
-      updateForm(() => ({ ...form, [e.target.name]: e.target.checked}))
+  const [value1, onChange] = useState(0);
+  const [value2, onChange2] = useState(0);
+  const [value3, onChange3] = useState(0);
+  const [value4, onChange4] = useState(0);
+  const [value5, onChange5] = useState(0);
+  const [value6, onChange6] = useState(0);
+  const [value7, onChange7] = useState(0);
+  const [value8, onChange8] = useState(0);
+  const [value9, onChange9] = useState(0);
+  const [value10, onChange10] = useState(0);
+  const [value11, onChange11] = useState(0);
+  const [value12, onChange12] = useState(0);
+  const a = [value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12];
+  useEffect(()=>{
+    const ele = document.querySelectorAll(".slider-bubble");
+    if (ele){
+      var c = 0;
+      ele.forEach(function(h){
+        h.style.marginLeft = a[c] * 51.5 + 130 + 'px';
+        c ++;
+      });
     }
-    else {
-      updateForm(() => ({ ...form, [e.target.name]: e.target.value}))
+    const eles = document.querySelectorAll(".slider");
+    var total = 0;
+    eles.forEach(function(i){
+      total += parseInt(i.value);
+    });
+    const points = document.querySelector("#slide-points");
+    if (points){
+      if (80 - total >= 0){
+        points.style.color = "black";
+      } else {
+        points.style.color = "red";
+      }
+      points.innerHTML = 80 - total;
     }
-  }
-
-  function updateSlider(e){
-      var total = 80;
-      document.getElementById("slide-points").innerHTML = total;
-  }
+  }, [a])
 
   function OnClickStep1(e) {
     updateSelection('step1')
@@ -115,63 +136,75 @@ const SetupProfile = ( ) => {
               </div>
               <div className = "slidecontainer">
                 <p className = "sliderfront">Flexibility </p>  <p className ="slider-zero">0 </p>
-                <input type="range" min="0" max="10" defaultValue="0" className="slider" onChange = {updateSlider} id="flexibility"/>
+                <input type="range" min="0" max="10" defaultValue="0" className="slider" value  = {value1} onChange = {({target:{value:radius}}) => {onChange(radius)}} id="flexibility"/>
+                <div className="slider-bubble"> {value1} </div>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
                 <p className = "sliderfront">Diversity</p>
                 <p className ="slider-zero">0</p>
-                <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="diversity-slider"/>
+                <input type="range" min="0" max="10" defaultValue="0" className = "slider" value  = {value2} onChange = {({target:{value:radius}}) => {onChange2(radius)}} id="diversity-slider"/>
+                <div className="slider-bubble"> {value2} </div>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
                 <p className = "sliderfront">Innovation</p>  <p className ="slider-zero">0 </p>
-                <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Innovation-slider"/>
+                <input type="range" min="0" max="10" defaultValue="0" className = "slider" value  = {value3} onChange = {({target:{value:radius}}) => {onChange3(radius)}} id="Innovation-slider"/>
+                <div className="slider-bubble"> {value3} </div>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
                 <p className = "sliderfront">Customers</p>  <p className ="slider-zero">0 </p>
-                <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Customers-slider"/>
+                <input type="range" min="0" max="10" defaultValue="0" className = "slider" value  = {value4} onChange = {({target:{value:radius}}) => {onChange4(radius)}} id="Customers-slider"/>
+                <div className="slider-bubble"> {value4} </div>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
                 <p className = "sliderfront">Authenticity</p>  <p className ="slider-zero">0 </p>
-                <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Authenticity-slider"/>
+                <input type="range" min="0" max="10" defaultValue="0" className = "slider" value  = {value5} onChange = {({target:{value:radius}}) => {onChange5(radius)}} id="Authenticity-slider"/>
+                <div className="slider-bubble"> {value5} </div>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
                 <p className = "sliderfront">Accountability</p>  <p className ="slider-zero">0 </p>
-                <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Accountability-slider"/>
+                <input type="range" min="0" max="10" defaultValue="0" className = "slider" value = {value6} onChange = {({target:{value:radius}}) => {onChange6(radius)}}  id="Accountability-slider"/>
+                <div className="slider-bubble"> {value6} </div>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
                 <p className = "sliderfront">Sustainability</p>  <p className ="slider-zero">0 </p>
-                <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Sustainability-slider"/>
+                <input type="range" min="0" max="10" defaultValue="0" className = "slider" value = {value7} onChange = {({target:{value:radius}}) => {onChange7(radius)}} id="Sustainability-slider"/>
+                <div className="slider-bubble"> {value7} </div>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
                 <p className = "sliderfront">Purpose</p>  <p className ="slider-zero">0 </p>
-                <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Purpose-slider"/>
+                <input type="range" min="0" max="10" defaultValue="0" className = "slider" value = {value8} onChange = {({target:{value:radius}}) => {onChange8(radius)}} id="Purpose-slider"/>
+                <div className="slider-bubble"> {value8} </div>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
                 <p className = "sliderfront">Quality</p>  <p className ="slider-zero">0 </p>
-                <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Quality-slider"/>
+                <input type="range" min="0" max="10" defaultValue="0" className = "slider" value = {value9} onChange = {({target:{value:radius}}) => {onChange9(radius)}} id="Quality-slider"/>
+                <div className="slider-bubble"> {value9} </div>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
                 <p className = "sliderfront">Curiousity</p>  <p className ="slider-zero">0 </p>
-                <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Curiousity-slider"/>
+                <input type="range" min="0" max="10" defaultValue="0" className = "slider" value = {value10} onChange = {({target:{value:radius}}) => {onChange10(radius)}} id="Curiousity-slider"/>
+                <div className="slider-bubble"> {value10} </div>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
                 <p className = "sliderfront">Generosity</p>  <p className ="slider-zero">0 </p>
-                <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Generosity-slider"/>
+                <input type="range" min="0" max="10" defaultValue="0" className = "slider" value = {value11} onChange = {({target:{value:radius}}) => {onChange11(radius)}} id="Generosity-slider"/>
+                <div className="slider-bubble"> {value11} </div>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
                 <p className = "sliderfront">Collaboration</p>  <p className ="slider-zero">0 </p>
-                <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Collaboration-slider"/>
+                <input type="range" min="0" max="10" defaultValue="0" className = "slider" value = {value12} onChange = {({target:{value:radius}}) => {onChange12(radius)}} id="Collaboration-slider"/>
+                <div className="slider-bubble"> {value12} </div>
                 <p className = "sliderback">10</p>
               </div>
               <hr />
