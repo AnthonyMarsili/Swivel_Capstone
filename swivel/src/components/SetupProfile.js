@@ -60,10 +60,10 @@ const SetupProfile = ( ) => {
           (selection == "step1" || selection == "") && (
           <div className = "setup-content" id = "step_1">
             <div className="setup-nav" id="setup-nav">
-              <button className="setup-nav-btn active" onClick = {() => OnClickStep1()}>General information</button>
-              <button className="setup-nav-btn" onClick = {() => OnClickStep2()}>About your company</button>
-              <button className="setup-nav-btn" onClick = {() => OnClickStep3()}>What you're looking for</button>
-              <button className="setup-nav-btn" onClick = {() => OnClickStep4()}>About you</button>
+              <button className="setup-nav-btn active" onClick = {() => OnClickStep1()}> <div className = "setup-nav-nbr active"> 1 </div> General information</button>
+              <button className="setup-nav-btn" onClick = {() => OnClickStep2()}> <div className = "setup-nav-nbr"> 2 </div> About your company</button>
+              <button className="setup-nav-btn" onClick = {() => OnClickStep3()}> <div className = "setup-nav-nbr"> 3 </div> What you're looking for</button>
+              <button className="setup-nav-btn" onClick = {() => OnClickStep4()}> <div className = "setup-nav-nbr"> 4 </div> About you</button>
             </div>
 
             <h1 className = "setup-h1">Step 1</h1>
@@ -98,10 +98,10 @@ const SetupProfile = ( ) => {
           selection == "step2" && (
             <div className = "setup-content" id = "step_2">
             <div className="setup-nav" id="setup-nav">
-              <button className="setup-nav-btn" onClick = {() => OnClickStep1()}>General information</button>
-              <button className="setup-nav-btn active" onClick = {() => OnClickStep2()}>About your company</button>
-              <button className="setup-nav-btn" onClick = {() => OnClickStep3()}>What you're looking for</button>
-              <button className="setup-nav-btn" onClick = {() => OnClickStep4()}>About you</button>
+              <button className="setup-nav-btn" onClick = {() => OnClickStep1()}> <div className = "setup-nav-nbr"> 1 </div> General information</button>
+              <button className="setup-nav-btn" onClick = {() => OnClickStep2()}> <div className = "setup-nav-nbr active"> 2 </div> About your company</button>
+              <button className="setup-nav-btn" onClick = {() => OnClickStep3()}> <div className = "setup-nav-nbr"> 3 </div> What you're looking for</button>
+              <button className="setup-nav-btn" onClick = {() => OnClickStep4()}> <div className = "setup-nav-nbr"> 4 </div> About you</button>
             </div>
 
               <h1 className = "setup-h1">Step 2</h1>
@@ -380,10 +380,10 @@ const SetupProfile = ( ) => {
           selection == "step3" && (
             <div className = "setup-content" id = "step_3">
               <div className="setup-nav" id="setup-nav">
-                <button className="setup-nav-btn" onClick = {() => OnClickStep1()}>General information</button>
-                <button className="setup-nav-btn" onClick = {() => OnClickStep2()}>About your company</button>
-                <button className="setup-nav-btn active" onClick = {() => OnClickStep3()}>What you're looking for</button>
-                <button className="setup-nav-btn" onClick = {() => OnClickStep4()}>About you</button>
+                <button className="setup-nav-btn" onClick = {() => OnClickStep1()}> <div className = "setup-nav-nbr"> 1 </div> General information</button>
+                <button className="setup-nav-btn" onClick = {() => OnClickStep2()}> <div className = "setup-nav-nbr"> 2 </div> About your company</button>
+                <button className="setup-nav-btn active" onClick = {() => OnClickStep3()}> <div className = "setup-nav-nbr active"> 3 </div> What you're looking for</button>
+                <button className="setup-nav-btn" onClick = {() => OnClickStep4()}> <div className = "setup-nav-nbr"> 4 </div> About you</button>
               </div>
               <h1 className = "setup-h1">Step 3</h1>
               <h2 className = "setup-h2">Almost Done</h2>
@@ -685,10 +685,10 @@ const SetupProfile = ( ) => {
           selection == "step4" && (
             <div className = "setup-content" id = "step_4">
               <div className="setup-nav" id="setup-nav">
-                <button className="setup-nav-btn" onClick = {() => OnClickStep1()}>General information</button>
-                <button className="setup-nav-btn" onClick = {() => OnClickStep2()}>About your company</button>
-                <button className="setup-nav-btn" onClick = {() => OnClickStep3()}>What you're looking for</button>
-                <button className="setup-nav-btn active" onClick = {() => OnClickStep4()}>About you</button>
+                <button className="setup-nav-btn" onClick = {() => OnClickStep1()}> <div className = "setup-nav-nbr"> 1 </div> General information</button>
+                <button className="setup-nav-btn" onClick = {() => OnClickStep2()}> <div className = "setup-nav-nbr"> 2 </div> About your company</button>
+                <button className="setup-nav-btn" onClick = {() => OnClickStep3()}> <div className = "setup-nav-nbr"> 3 </div> What you're looking for</button>
+                <button className="setup-nav-btn active" onClick = {() => OnClickStep4()}> <div className = "setup-nav-nbr active"> 4 </div> About you</button>
               </div>
               <h1 className = "setup-h1">Step 4</h1>
               <h2 className = "setup-h2">Last step.</h2>
@@ -703,7 +703,7 @@ const SetupProfile = ( ) => {
               <textarea className ="setup-textarea" id = "company_life" type = "text" maxLength = "100"/>
               <hr />
               <button className="setup-last" onClick = {() => OnClickStep3()}>←</button>
-              <Link to="/dashboard" className="setup-next">→</Link>
+              <Link to="/dashboard" id = "finish-setup" className="setup-next">→</Link>
             </div>
           )
         }
