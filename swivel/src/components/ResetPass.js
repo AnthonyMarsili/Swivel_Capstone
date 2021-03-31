@@ -1,8 +1,9 @@
 /* Matching for companies, should be the default page after login */
 //import { withAuthenticator } from 'aws-amplify-react';
 
-import { Auth } from "aws-amplify";
+import { Auth, Hub } from "aws-amplify";
 import React, { useState, useEffect } from 'react'
+import {Link, Redirect} from 'react-router-dom'
 //will only work if verified_email = true
 
 
@@ -12,6 +13,7 @@ const initialForm = {userEmail: '', password: '', authCode: '', formType: 'enter
 const ResetPass = ( ) => {
    //let user = await Auth.currentAuthenticatedUser();
    const [form, updateForm] = useState(initialForm)
+   const [redirectToLogin, setRedirectToLogin] = useState(false)
    const email = form['userEmail']
    const secret_code = form['authCode']
    const new_password = form['password']
@@ -21,24 +23,29 @@ const ResetPass = ( ) => {
       updateForm(() => ({ ...form, [e.target.name]: e.target.value }))
     }
 
-   
+
 
    async function sendReset(){
       Auth.forgotPassword(email)
          .then(data => console.log(data))
-         .catch(err => console.log(err)); 
+         .catch(err => console.log(err));
       updateForm(() => ({ ...form, formType: 'confirmReset' }))
    }
 
    async function confirmReset(){
       Auth.forgotPasswordSubmit(email,secret_code,new_password)
-         .then(data => console.log(data))
-         .catch(err => console.log(err));
+         .then(data => setRedirectToLogin(true))
+         .catch(err => alert(err.message));
    }
       const { formType } = form
   return (
-    
+
     <div className="reset-info">
+    {
+      redirectToLogin === true && (
+        <Redirect to= '/login' />
+      )
+    }
     {
       formType === 'enterEmail' && (
         <div className="email-div">
