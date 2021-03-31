@@ -38,11 +38,9 @@ const SideNav = () => {
   }
 
   async function signOut() {
-    try {
-        await Auth.signOut();
-    } catch (error) {
-        console.log('error signing out: ', error);
-    }
+    await Auth.signOut()
+     .then(data => console.log(data))
+     .catch(err => console.log(err));
   }
 
   return (
