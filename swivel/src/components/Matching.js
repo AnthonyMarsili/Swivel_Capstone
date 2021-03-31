@@ -6,14 +6,19 @@ import React, { useState, useEffect } from 'react'
 import Amplify, { API, Auth, Hub } from 'aws-amplify'
 import {Link, Redirect} from 'react-router-dom'
 import { getMatch, getUser, listMatchs } from '../graphql/queries'
+import { updateUser } from '../graphql/mutations'
+
 
 const userList = []
+const userInfo = []
 
 const Matching = ( ) => {
   const [userID, setUserID] = useState(false)
   const [redirectToLogin, setRedirectToLogin] = useState(false)
   const [prosUsers, setProsUsers] = useState(userList)
   const [index, setIndex] = useState(0)
+  const [currUserInfo, setCurrUserInfo] = useState(userInfo)
+
   //const [userLength, setUserLength] = useState(0)
 
   // false = student, true = company
@@ -33,6 +38,8 @@ const Matching = ( ) => {
             getProsUsers(userID, true)
             setUserType(true)
           }
+          setUserID(userID)
+
         return () => {
           isCancelled = true
         }
@@ -46,6 +53,7 @@ const Matching = ( ) => {
     var userid = userID.toString();
     //(async () => {
     var userInfo = await getUserInfo(userid)
+    setCurrUserInfo(userInfo)
     var notSeenIds = userInfo.data.getUser.notSeen;
     //setUserLength(notSeenIds.length);
     (async () => {
@@ -120,9 +128,75 @@ const Matching = ( ) => {
     return await API.graphql({ query: getUser, variables: {id: userID}})
   }
 
-  function matchInteraction(interType, matchID){
-    console.log(matchID);
-    setIndex(index+1)
+  async function passUser(matchID){
+
+    //var currUser = await getUserInfo(userID)
+
+    var currUserData = currUserInfo.data.getUser
+
+    var notSeenArr = currUserData.notSeen
+    var skippedArr = currUserData.skipped
+
+    var i = notSeenArr.indexOf(matchID)
+    notSeenArr.splice(i, 1)
+
+    skippedArr.push(matchID)
+
+    var updateValues = {
+      id: currUserData.id,
+      notSeen: notSeenArr,
+      skipped: skippedArr
+    }
+
+      /*(async () => {
+        await API.graphql({ query: updateUser, variable:{UpdateUserInput: updateValues}})
+      })()*/
+      // figure this out tomorrow
+    //setIndex(index+1)
+  }
+
+  async function likeUser(matchID){
+    //(async () => {
+    var currMatch = await getUserInfo(matchID)
+//      var currMatch = await getUserInfo(matchID)
+
+    var currMatchData = currMatch.data.getUser
+    var currUserData = currUserInfo.data.getUser
+
+    var notSeenArr = currUserData.notSeen
+    var likedArr = currUserData.liked
+
+    var matchNotSeenArr = currMatchData.notSeen
+    var matchLikedArr = currMatchData.liked
+
+    if(matchLikedArr.includes(currMatchData.id)){
+      // create match status_flag upcoming
+      // move out of notSeen
+      // render match component (pass in info to make match)
+    } else if(matchNotSeenArr.includes(currMatchData.id)){
+      // create match status_flag pending
+      // move out of notSeen
+    } else {
+      // move out of notSeen
+    }
+
+    /*var i = notSeenArr.indexOf(matchID)
+    notSeenArr.splice(i, 1)
+
+    skippedArr.push(matchID)
+
+    var updateValues = {
+      id: currUserData.id,
+      notSeen: notSeenArr,
+      skipped: skippedArr
+    } */
+
+      /*(async () => {
+        await API.graphql({ query: updateUser, variable:{UpdateUserInput: updateValues}})
+      })()*/
+      // figure this out tomorrow
+    //})()
+    //setIndex(index+1)
   }
 
   return (
@@ -139,8 +213,8 @@ const Matching = ( ) => {
         <SideNav />
           <div className="matching-div">
           <MatchCard userType={userType} userInfo={prosUsers[index]} end={prosUsers.length} index={index}/>
-          <button className="pass" id={userType + "-pass"} onClick={() => matchInteraction("pass", prosUsers[index])} >Not Right Now.</button>
-          <button className="connect" id={userType + "-conn"} onClick={() => matchInteraction("connect", prosUsers[index])} >Connect.</button>
+          <button className="pass" id={userType + "-pass"} onClick={() => passUser(prosUsers[index])} >Not Right Now.</button>
+          <button className="connect" id={userType + "-conn"} onClick={() => likeUser(prosUsers[index])} >Connect.</button>
           </div>
         </div>
       )
