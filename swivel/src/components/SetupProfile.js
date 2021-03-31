@@ -52,25 +52,25 @@ const SetupProfile = ( ) => {
     <div className = "body">
       <div className='landing-nav'>
         <NavLink exact to="/" className="nav-btn-logo"><img className="nav-logo" src={logo_full} alt="Swivel_Logo" /></NavLink>
-        <NavLink activeStyle={{ fontWeight: "bold" }} exact to="/login" className="nav-btn" id="sign-up"><u>Save and exit.</u></NavLink>
+        <NavLink activeStyle={{ fontWeight: "bold" }} exact to="/login" className="nav-btn" id="setup-save">Save and exit.</NavLink>
         <NavLink activeStyle={{ fontWeight: "bold" }} exact to="/dashboard" className="nav-btn"><u>skip</u></NavLink>
       </div>
       <div>
         {
           (selection == "step1" || selection == "") && (
           <div className = "setup-content" id = "step_1">
-            <div className="side-nav" id="comp-nav">
-              <button className="side-nav-btn active" onClick = {() => OnClickStep1()}>General information</button>
-              <button className="side-nav-btn" onClick = {() => OnClickStep2()}>About your company</button>
-              <button className="side-nav-btn" onClick = {() => OnClickStep3()}>What you're looking for</button>
-              <button className="side-nav-btn" onClick = {() => OnClickStep4()}>About you</button>
+            <div className="setup-nav" id="setup-nav">
+              <button className="setup-nav-btn active" onClick = {() => OnClickStep1()}>General information</button>
+              <button className="setup-nav-btn" onClick = {() => OnClickStep2()}>About your company</button>
+              <button className="setup-nav-btn" onClick = {() => OnClickStep3()}>What you're looking for</button>
+              <button className="setup-nav-btn" onClick = {() => OnClickStep4()}>About you</button>
             </div>
 
-            <h1>Step 1</h1>
-            <h2>Getting Started</h2>
-            <p>What is your position?</p>
-            <input className ="step1-box" id = "position-box" type = "text"/>
-            <p>What is your company size?</p>
+            <h1 className = "setup-h1">Step 1</h1>
+            <h2 className = "setup-h2">Getting Started</h2>
+            <p className = "setup-sub">What is your position?</p>
+            <input className ="step1-box" id = "position-box" type = "text" placeholder = "Position"/>
+            <p className = "setup-sub">What is your company size?</p>
             <select id = "size-box">
                 <option>11-50</option>
                 <option>51-200</option>
@@ -78,12 +78,12 @@ const SetupProfile = ( ) => {
                 <option>501-1000</option>
                 <option>1001-5000</option>
             </select>
-            <p>Where are you located? </p>
-            <input className ="step1-box" id = "location-box" type = "text"/>
-            <p>What is your company's website? </p>
-            <input className ="step1-box" id = "website-box" type = "text"/>
-            <p>What post secondary/graduate school did you attend?</p>
-            <input className ="step1-box" id = "school-box" type = "text"/>
+            <p className = "setup-sub" id = "location-text">Where are you located? </p>
+            <input className ="step1-box" id = "location-box" type = "text" placeholder = "Location"/>
+            <p className = "setup-sub">What is your company's website? </p>
+            <input className ="step1-box" id = "website-box" type = "text" placeholder = "Website"/>
+            <p className = "setup-sub">What post secondary/graduate school did you attend?</p>
+            <input className ="step1-box" id = "school-box" type = "text" placeholder = "Education"/>
             <label>
               <p></p>
               <input type = "checkbox" id = "no-school-check"/>
@@ -97,100 +97,101 @@ const SetupProfile = ( ) => {
         {
           selection == "step2" && (
             <div className = "setup-content" id = "step_2">
-            <div className="side-nav" id="comp-nav">
-              <button className="side-nav-btn" onClick = {() => OnClickStep1()}>General information</button>
-              <button className="side-nav-btn active" onClick = {() => OnClickStep2()}>About your company</button>
-              <button className="side-nav-btn" onClick = {() => OnClickStep3()}>What you're looking for</button>
-              <button className="side-nav-btn" onClick = {() => OnClickStep4()}>About you</button>
+            <div className="setup-nav" id="setup-nav">
+              <button className="setup-nav-btn" onClick = {() => OnClickStep1()}>General information</button>
+              <button className="setup-nav-btn active" onClick = {() => OnClickStep2()}>About your company</button>
+              <button className="setup-nav-btn" onClick = {() => OnClickStep3()}>What you're looking for</button>
+              <button className="setup-nav-btn" onClick = {() => OnClickStep4()}>About you</button>
             </div>
 
-              <h1>Step 2</h1>
-              <h2>Getting There</h2>
-              <p>What are your company's values?</p>
-              <p>Please distribute 80 points to what your company values most. Hover over value of description of value.</p>
+              <h1 className = "setup-h1">Step 2</h1>
+              <h2 className = "setup-h2">Getting There</h2>
+              <p className = "setup-sub">What are your company's values?</p>
+              <p id = "slidertop">Please distribute <b>80 points</b> to what your company values most. Hover over value of description of value.</p>
 
               <div className = "slidercounter">
                 <p>Points Left:</p>
                 <p id = "slide-points">80</p>
               </div>
               <div className = "slidecontainer">
-                <p className = "sliderfront">Flexibility <span className ="slider-zero">0</span></p>
+                <p className = "sliderfront">Flexibility </p>  <p className ="slider-zero">0 </p>
                 <input type="range" min="0" max="10" defaultValue="0" className="slider" onChange = {updateSlider} id="flexibility"/>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
-                <p className = "sliderfront">Diversity<span className ="slider-zero">0</span></p>
+                <p className = "sliderfront">Diversity</p>
+                <p className ="slider-zero">0</p>
                 <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="diversity-slider"/>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
-                <p className = "sliderfront">Innovation<span className ="slider-zero">0</span></p>
+                <p className = "sliderfront">Innovation</p>  <p className ="slider-zero">0 </p>
                 <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Innovation-slider"/>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
-                <p className = "sliderfront">Customers<span className ="slider-zero">0</span></p>
+                <p className = "sliderfront">Customers</p>  <p className ="slider-zero">0 </p>
                 <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Customers-slider"/>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
-                <p className = "sliderfront">Authenticity<span className ="slider-zero">0</span></p>
+                <p className = "sliderfront">Authenticity</p>  <p className ="slider-zero">0 </p>
                 <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Authenticity-slider"/>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
-                <p className = "sliderfront">Accountability<span className ="slider-zero">0</span></p>
+                <p className = "sliderfront">Accountability</p>  <p className ="slider-zero">0 </p>
                 <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Accountability-slider"/>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
-                <p className = "sliderfront">Sustainability<span className ="slider-zero">0</span></p>
+                <p className = "sliderfront">Sustainability</p>  <p className ="slider-zero">0 </p>
                 <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Sustainability-slider"/>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
-                <p className = "sliderfront">Purpose<span className ="slider-zero">0</span></p>
+                <p className = "sliderfront">Purpose</p>  <p className ="slider-zero">0 </p>
                 <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Purpose-slider"/>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
-                <p className = "sliderfront">Quality<span className ="slider-zero">0</span></p>
+                <p className = "sliderfront">Quality</p>  <p className ="slider-zero">0 </p>
                 <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Quality-slider"/>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
-                <p className = "sliderfront">Curiousity<span className ="slider-zero">0</span></p>
+                <p className = "sliderfront">Curiousity</p>  <p className ="slider-zero">0 </p>
                 <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Curiousity-slider"/>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
-                <p className = "sliderfront">Generosity<span className ="slider-zero">0</span></p>
+                <p className = "sliderfront">Generosity</p>  <p className ="slider-zero">0 </p>
                 <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Generosity-slider"/>
                 <p className = "sliderback">10</p>
               </div>
               <div className = "slidecontainer">
-                <p className = "sliderfront">Collaboration<span className ="slider-zero">0</span></p>
+                <p className = "sliderfront">Collaboration</p>  <p className ="slider-zero">0 </p>
                 <input type="range" min="0" max="10" defaultValue="0" className = "slider" id="Collaboration-slider"/>
                 <p className = "sliderback">10</p>
               </div>
               <hr />
-              <h2>Do you offer any employee benefits and perks</h2>
+              <h3 className = "setup-h3">Do you offer any employee benefits and perks?</h3>
               <p>What are the additional benefits and perks that make your company unique and a desirable company to work at?</p>
               <p>Please select all that apply</p>
-              <table>
+              <table className = "setup-table">
                 <tr className = "setup-table-header">
-                  <td>
+                  <th>
                     Health, Wellness, Inclusion
-                  </td>
-                  <td>
+                  </th>
+                  <th>
                     Pay & Vacation
-                  </td>
-                  <td>
+                  </th>
+                  <th>
                     Giving Back, Growth, Schedule, Tech
-                  </td>
-                  <td>
+                  </th>
+                  <th>
                     Office & Culture
-                  </td>
+                  </th>
                 </tr>
                 <tr>
                   <td>
@@ -206,12 +207,16 @@ const SetupProfile = ( ) => {
                     </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
-                    CSR Initiatives
+                    <label>
+                    <input type = "checkbox" id = ""/>
+                      CSR Initiatives
+                      </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
-                    Recreational Clubs
+                    <label>
+                    <input type = "checkbox" id = ""/>
+                      Recreational Clubs
+                    </label>
                   </td>
                 </tr>
                 <tr>
@@ -228,12 +233,16 @@ const SetupProfile = ( ) => {
                     </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
-                    Volunteer Time
+                    <label>
+                    <input type = "checkbox" id = ""/>
+                      Volunteer Time
+                    </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
+                    <label>
+                    <input type = "checkbox" id = ""/>
                     Company Outings
+                    </label>
                   </td>
                 </tr>
                 <tr>
@@ -250,12 +259,16 @@ const SetupProfile = ( ) => {
                     </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
+                    <label>
+                    <input type = "checkbox" id = ""/>
                     Employee Training & Growth Programs
+                    </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
+                    <label>
+                    <input type = "checkbox" id = ""/>
                     Happy Hours
+                    </label>
                   </td>
                 </tr>
                 <tr>
@@ -272,12 +285,16 @@ const SetupProfile = ( ) => {
                     </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
+                    <label>
+                    <input type = "checkbox" id = ""/>
                     Remote Work Opportunities
+                    </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
+                    <label>
+                    <input type = "checkbox" id = ""/>
                     Pet-friendly Environment
+                    </label>
                   </td>
                 </tr>
                 <tr>
@@ -294,12 +311,16 @@ const SetupProfile = ( ) => {
                     </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
+                    <label>
+                    <input type = "checkbox" id = ""/>
                     Flexible Schedule/Hours
+                    </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
+                    <label>
+                    <input type = "checkbox" id = ""/>
                     Stocked Kitchen (Snacks & Drinks)
+                    </label>
                   </td>
                 </tr>
                 <tr>
@@ -314,12 +335,16 @@ const SetupProfile = ( ) => {
                     </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
+                    <label>
+                    <input type = "checkbox" id = ""/>
                     State-of-the-art Technology
+                    </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
+                    <label>
+                    <input type = "checkbox" id = ""/>
                     Casual Dress
+                    </label>
                   </td>
                 </tr>
                  <tr>
@@ -332,12 +357,16 @@ const SetupProfile = ( ) => {
                     </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
+                    <label>
+                    <input type = "checkbox" id = ""/>
                     Technology Stipends
+                    </label>
                   </td>
                   <td>
-                  <input type = "checkbox" id = ""/>
+                    <label>
+                    <input type = "checkbox" id = ""/>
                     Location (Accessible by Public Transit)
+                    </label>
                   </td>
                 </tr>
               </table>
@@ -350,18 +379,18 @@ const SetupProfile = ( ) => {
         {
           selection == "step3" && (
             <div className = "setup-content" id = "step_3">
-              <div className="side-nav" id="comp-nav">
-                <button className="side-nav-btn" onClick = {() => OnClickStep1()}>General information</button>
-                <button className="side-nav-btn" onClick = {() => OnClickStep2()}>About your company</button>
-                <button className="side-nav-btn active" onClick = {() => OnClickStep3()}>What you're looking for</button>
-                <button className="side-nav-btn" onClick = {() => OnClickStep4()}>About you</button>
+              <div className="setup-nav" id="setup-nav">
+                <button className="setup-nav-btn" onClick = {() => OnClickStep1()}>General information</button>
+                <button className="setup-nav-btn" onClick = {() => OnClickStep2()}>About your company</button>
+                <button className="setup-nav-btn active" onClick = {() => OnClickStep3()}>What you're looking for</button>
+                <button className="setup-nav-btn" onClick = {() => OnClickStep4()}>About you</button>
               </div>
-              <h1>Step 3</h1>
-              <h2>Almost Done</h2>
-              <p>What technical skills are you looking for?</p>
+              <h1 className = "setup-h1">Step 3</h1>
+              <h2 className = "setup-h2">Almost Done</h2>
+              <p className = "setup-sub">What technical skills are you looking for?</p>
               <p>Choose 5 skills that you are looking for in a candidate.</p>
-              <h3>Computer Science</h3>
-              <table>
+              <h3 className = "setup-h3">Computer Science</h3>
+              <table className = "setup-table">
                 <tr>
                   <td>
                     <button className="skill-btn" onClick = {() => toggleButtonState(this)} id = "web-skill">Web Dev</button>
@@ -423,8 +452,8 @@ const SetupProfile = ( ) => {
                   </td>
                 </tr>
                 </table>
-                <h3> Engineering </h3>
-                <table>
+                <h3 className = "setup-h3"> Engineering </h3>
+                <table className = "setup-table">
                   <tr>
                     <td>
                       <button className="skill-btn" onClick = {() => toggleButtonState(this)} id = "Electronic-skill">Electronic Eng</button>
@@ -487,8 +516,8 @@ const SetupProfile = ( ) => {
                   </tr>
                 </table>
 
-                <h3> Commerce </h3>
-                <table>
+                <h3 className = "setup-h3"> Commerce </h3>
+                <table className = "setup-table">
                   <tr>
                     <td>
                       <button className="skill-btn" onClick = {() => toggleButtonState(this)} id = "sales-skill">Salesforce/CRMs</button>
@@ -542,8 +571,8 @@ const SetupProfile = ( ) => {
                   </tr>
                 </table>
 
-                <h3> Design </h3>
-                <table>
+                <h3 className = "setup-h3"> Design </h3>
+                <table className = "setup-table">
                   <tr>
                     <td>
                       <button className="skill-btn" onClick = {() => toggleButtonState(this)} id = "UI-skill">UI</button>
@@ -575,9 +604,9 @@ const SetupProfile = ( ) => {
                 </table>
               <hr />
 
-              <p> What soft skills are you looking for in an employee?</p>
+              <p className = "setup-sub">What soft skills are you looking for in an employee?</p>
               <p>Choose 3 soft skills that you most seek in a candidate.</p>
-                <table>
+                <table className = "setup-table">
                   <tr>
                     <td>
                       <button className="skill-btn" onClick = {() => toggleButtonState(this)} id = "leader-skill">Leadership</button>
@@ -631,9 +660,9 @@ const SetupProfile = ( ) => {
                   </tr>
                 </table>
                 <hr />
-                <p>Employment Type?</p>
+                <p className = "setup-sub">Employment Type?</p>
                 <p>What position length are you looking to hire for? Please select all that apply.</p>
-                <table>
+                <table className = "setup-table">
                   <tr>
                     <td>
                       <button className="skill-btn" onClick = {() => toggleButtonState(this)} id = "full-time">Full Time</button>
@@ -655,23 +684,26 @@ const SetupProfile = ( ) => {
         {
           selection == "step4" && (
             <div className = "setup-content" id = "step_4">
-              <div className="side-nav" id="comp-nav">
-                <button className="side-nav-btn" onClick = {() => OnClickStep1()}>General information</button>
-                <button className="side-nav-btn" onClick = {() => OnClickStep2()}>About your company</button>
-                <button className="side-nav-btn" onClick = {() => OnClickStep3()}>What you're looking for</button>
-                <button className="side-nav-btn active" onClick = {() => OnClickStep4()}>About you</button>
+              <div className="setup-nav" id="setup-nav">
+                <button className="setup-nav-btn" onClick = {() => OnClickStep1()}>General information</button>
+                <button className="setup-nav-btn" onClick = {() => OnClickStep2()}>About your company</button>
+                <button className="setup-nav-btn" onClick = {() => OnClickStep3()}>What you're looking for</button>
+                <button className="setup-nav-btn active" onClick = {() => OnClickStep4()}>About you</button>
               </div>
-              <h1>Step 4</h1>
-              <h2>Last step.</h2>
-              <p>Tell us about your company.</p>
+              <h1 className = "setup-h1">Step 4</h1>
+              <h2 className = "setup-h2">Last step.</h2>
+              <p className = "setup-sub">Tell us about your company.</p>
               <p>In 100 words or less</p>
-              <input className ="setup-textarea" id = "company_intro" type = "text" maxLength = "100"/>
-              <p>What is life like at your company.</p>
+              <textarea className ="setup-textarea" id = "company_intro" type = "text" maxLength = "100"/>
+              <p className = "setup-sub">What is life like at your company.</p>
               <p>In 100 words or less</p>
-              <input className ="setup-textarea" id = "company_life" type = "text" maxLength = "100"/>
+              <textarea className ="setup-textarea" id = "company_life" type = "text" maxLength = "100"/>
+              <p className = "setup-sub">Tell us about yourself.</p>
+              <p>In 100 words or less</p>
+              <textarea className ="setup-textarea" id = "company_life" type = "text" maxLength = "100"/>
               <hr />
               <button className="setup-last" onClick = {() => OnClickStep3()}>←</button>
-              <Link to="/dashboard" className="setup-last">→</Link>
+              <Link to="/dashboard" className="setup-next">→</Link>
             </div>
           )
         }
