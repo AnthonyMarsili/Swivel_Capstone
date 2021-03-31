@@ -27,10 +27,15 @@ const Dashboard = ( ) => {
     Auth.currentSession()
       .then(currUser => {
         var userID = currUser['idToken']['payload']['sub']
-          getUserType(userID).then(() => {
-            console.log(userType)
-            getMatches(userID, userType)
-          })
+
+        if(currUser['idToken']['payload']['custom:student'] === '1'){
+          getMatches(userID, false)
+          setUserType(false)
+        } else {
+          getMatches(userID, true)
+          setUserType(true)
+        }
+
         return () => {
           isCancelled = true
         }
@@ -39,20 +44,6 @@ const Dashboard = ( ) => {
         setRedirectToLogin(true)
       })
   }, [])
-
-  useEffect(() => {
-    let isCancelled = false
-    Auth.currentSession()
-      .then(currUser => {
-      //  var userID = currUser['idToken']['payload']['sub']
-        return () => {
-          isCancelled = true
-        }
-       })
-      .catch(err => {
-        setRedirectToLogin(true)
-      })
-  })
 
   async function getMatches(userID, type){
     var userid = userID.toString();
@@ -115,22 +106,6 @@ const Dashboard = ( ) => {
         console.log(err)
       })
     }
-
-  }
-
-  // unsure how we're flagging student vs student
-  async function getUserType(userID){
-    await API.graphql({ query: getUser, variables: {id: userID.toString() }}).then(response => {
-      var type = response.data.getUser.typeOfUser;
-      if(type == "Company"){
-        setUserType(true)
-      }
-      else {
-        setUserType(false)
-      }
-    }).catch(err => {
-      console.log(err);
-    });
 
   }
 
@@ -206,11 +181,20 @@ const Dashboard = ( ) => {
     }
     {
       redirectToLogin === false && (
-        <div className = "dashboard-body">
+        <div className = "internal-body">
         <MainNav />
         <SideNav />
           <div className="connections-div">
-            <p className="dashboard-title"> Connections </p>
+          {
+            userType === false && (
+              <p className="dashboard-title" id="stud-conn"> Connections </p>
+            )
+          }
+          {
+            userType === true && (
+              <p className="dashboard-title" id="comp-conn"> Connections </p>
+            )
+          }
             <div className="connections-elem">
             <Tabs>
               <div label="Upcoming">
