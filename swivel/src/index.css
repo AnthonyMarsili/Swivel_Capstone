@@ -1080,7 +1080,6 @@ td {
   font-size: 14px;
 }
 
-<<<<<<< HEAD
 #calendarOnScreen {
   position: absolute;
   left: 23%;
@@ -1113,8 +1112,6 @@ td {
   background-color: var(--company-main)
 }
 
-=======
->>>>>>> bda955206acb94af0ed6143ce2fabbfa81576263
 /* Matching screen */
 .matching-div{
   height: 99%;
