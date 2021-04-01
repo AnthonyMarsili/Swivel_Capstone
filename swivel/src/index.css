@@ -1060,3 +1060,12 @@ td {
   display: block;
   margin-top: 2%;
 }
+
+#displayedMeetingInfo {
+  display: inline-block;
+  margin-left: 45%;
+  margin-top: 10%;
+  padding: 2%;
+  background-color: rgba(253, 97, 96, 0.3);
+  border-radius: 25px;
+}
