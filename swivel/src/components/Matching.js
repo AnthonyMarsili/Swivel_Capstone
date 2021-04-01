@@ -27,11 +27,52 @@ const Matching = ( ) => {
   const [userType, setUserType] = useState(true)
 
   const [newMatchFlag, setNewMatchFlag] = useState(false)
-  const [upcomingMeeting, setUpcomingMeeting] = useState(null)
+  //const [upcomingMeeting, setUpcomingMeeting] = useState(null)
 
-  const getTimeFromMatch = (time) => {
-    console.log(time);
-    setUpcomingMeeting(time);
+  const finalizeMatch = (id, company, student, time, type) => {
+    if(type === "upcoming"){
+      const newMatchData = {
+        id: id,
+        company: company,
+        student: student,
+        createdAt: new Date().toISOString(),
+        status_flag: type,
+        messages: "",
+        upcoming_meeting: time
+        //updatedAt: new Date().toISOString(),
+      };
+
+      // create a new match field in the db
+      (async () => {
+        await API.graphql(graphqlOperation(createMatch, {input: newMatchData})).then(response => {
+          console.log("created new match")
+        }).catch(err => {
+          console.log(err)
+        })
+      })()
+
+    } else if(type === "pending"){
+        const newMatchData = {
+          id: id,
+          company: company,
+          student: student,
+          createdAt: new Date().toISOString(),
+          status_flag: type,
+          messages: "",
+          upcoming_meeting: null
+          //updatedAt: new Date().toISOString(),
+        };
+
+        // create a new match field in the db
+        (async () => {
+          await API.graphql(graphqlOperation(createMatch, {input: newMatchData})).then(response => {
+            console.log("created new match")
+          }).catch(err => {
+            console.log(err)
+          })
+        })()
+  }
+
     setNewMatchFlag(false)
   }
 
@@ -146,7 +187,6 @@ const Matching = ( ) => {
   }
 
   async function passUser(matchInfo){
-    console.log(index)
     var matchID = matchInfo.id;
 
     var currUserData = currUserInfo.data.getUser
@@ -162,10 +202,6 @@ const Matching = ( ) => {
     else
       skippedArr.push(matchID)
 
-    console.log(currUserData.id)
-    console.log("notSeen", notSeenArr)
-    console.log("skipped", skippedArr)
-
     //this works, i just don't wanna have to keep updating it manually
       /*(async () => {
         await API.graphql({ query: updateUser, variables: {input: {id: currUserData.id, notSeen: notSeenArr, skipped: skippedArr}}}).then(response => {
@@ -180,77 +216,30 @@ const Matching = ( ) => {
   async function likeUser(matchInfo){
     setNewMatchFlag(true)
 
+    var matchID = matchInfo.id;
+
     var currUserData = currUserInfo.data.getUser
 
     var notSeenArr = currUserData.notSeen
     var likedArr = currUserData.liked
 
-    var matchSkippedArr = matchInfo.skipped
-    var matchLikedArr = matchInfo.liked
-    var matchID = matchInfo.id
-
-    // remove match from current user notSeen
     var i = notSeenArr.indexOf(matchID)
     notSeenArr.splice(i, 1)
 
-    if(matchLikedArr.includes(currUserData.id)){
-      // create match status_flag upcoming
-      if(currUserData.typeOfUser === false){
-        var companyUser = matchID
-        var studentUser = currUserData.id
-      } else {
-        var companyUser = currUserData.id
-        var studentUser = matchID
-      }
+    if(likedArr[0] == " ")
+      likedArr[0] = matchID
+    else
+      likedArr.push(matchID)
 
-      const newMatchID = uuidv1();
-
-      // have to display match first, so we can get the meeting time
-
-      const newMatchData = {
-        id: newMatchID,
-        company: companyUser,
-        student: studentUser,
-        createdAt: new Date().toISOString(),
-        status_flag: "upcoming",
-        messages: "",
-        upcoming_meeting: upcomingMeeting
-        //updatedAt: new Date().toISOString(),
-      }
-
-      // add match id to uesrs liked
-      if(likedArr[0] == " ")
-        likedArr[0] = matchID
-      else
-        likedArr.push(matchID)
-
-      // create a new match field in the db
-      /*await API.graphql(graphqlOperation(createMatch, {input: newMatchData})).then(response => {
-        console.log("created new match")
-      }).catch(err => {
-        console.log(err)
-      })
-
-      (async () => {
-        await API.graphql({ query: updateUser, variables: {input: {id: currUserData.id, notSeen: notSeenArr, liked: likedArr}}}).then(response => {
+    //this works, i just don't wanna have to keep updating it manually
+      /*(async () => {
+        await API.graphql({ query: updateUser, variables: {input: {id: currUserData.id, notSeen: notSeenArr, skipped: skippedArr}}}).then(response => {
           console.log("updated")
         }).catch(err => {
           console.log(err)
         })
-        setNewMatchFlag(false)
-        setIndex(index+1)
       })()*/
-
-      // move out of notSeen
-      // render match component (pass in info to make match)
-    } else if(matchSkippedArr.includes(currUserData.id)){
-      // create match status_flag pending
-      // move out of notSeen
-    } else {
-      // move out of notSeen
-    }
-    //setIndex(index+1)
-
+    setIndex(index+1)
   }
 
   return (
@@ -271,7 +260,7 @@ const Matching = ( ) => {
           <button className="connect" id={userType + "-conn"} onClick={() => likeUser(prosUsers[index])} >Connect.</button>
           {
             newMatchFlag === true && (
-              <NewMatch userType={userType} userAvail={currUserInfo.data.getUser.availability} matchInfo={prosUsers[index]} getTimeFromMatch={getTimeFromMatch} />
+              <NewMatch userType={userType} userID={currUserInfo.data.getUser.id} userAvail={currUserInfo.data.getUser.availability} matchInfo={prosUsers[index]} finalizeMatch={finalizeMatch} />
             )
           }
           </div>
