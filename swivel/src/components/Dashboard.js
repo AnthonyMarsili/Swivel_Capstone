@@ -96,7 +96,8 @@ const Dashboard = ( ) => {
                 major: userData.major,
                 upcoming_meeting: matchData.upcoming_meeting,
                 messages: matchData.messages,
-                status_flag: matchData.status_flag
+                status_flag: matchData.status_flag,
+                email: matchData.email
               }
               allMatchesData.push(displayData)
           }
@@ -158,7 +159,7 @@ const Dashboard = ( ) => {
     var loc = matchInfo.loc
     var meeting = matchInfo.upcoming_meeting
     matchTypeArr.push(
-        <DashboardMatch userType={userType} matchType={matchType} name={name} line2={compPos} line3={loc} meeting={meeting}/>
+        <DashboardMatch userType={userType} matchType={matchType} name={name} line2={compPos} line3={loc} email={matchInfo.email} meeting={meeting}/>
     )
   }
 
@@ -168,7 +169,7 @@ const Dashboard = ( ) => {
     var school = matchInfo.school
     var meeting = matchInfo.upcoming_meeting
     matchTypeArr.push(
-        <DashboardMatch userType={userType} matchType={matchType} name={name} line2={school} line3={degreeMaj} meeting={meeting}/>
+        <DashboardMatch userType={userType} matchType={matchType} name={name} line2={school} line3={degreeMaj} email={matchInfo.email} meeting={meeting}/>
     )
   }
 
