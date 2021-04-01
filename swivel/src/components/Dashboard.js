@@ -8,22 +8,34 @@ import DashboardMatch from "./DashboardMatch"
 import React, { useState, useEffect } from 'react'
 import Amplify, { API, Auth, Hub } from 'aws-amplify'
 import {Link, Redirect} from 'react-router-dom'
-import { listMatchs, getUser } from '../graphql/queries'
+import { getMatch, getUser, listMatchs } from '../graphql/queries'
 
-const matchList = {}
+const matchList = []
 
 const Dashboard = ( ) => {
+  const [userID, setUserID] = useState(false)
   const [redirectToLogin, setRedirectToLogin] = useState(false)
   const [matches, setMatches] = useState(matchList)
+
   // false = student, true = company
   const [userType, setUserType] = useState(true)
+
+//  const userType = false
 
   useEffect(() => {
     let isCancelled = false
     Auth.currentSession()
       .then(currUser => {
         var userID = currUser['idToken']['payload']['sub']
-        getMatches(userID)
+
+        if(currUser['idToken']['payload']['custom:student'] === '1'){
+          getMatches(userID, false)
+          setUserType(false)
+        } else {
+          getMatches(userID, true)
+          setUserType(true)
+        }
+
         return () => {
           isCancelled = true
         }
@@ -31,21 +43,75 @@ const Dashboard = ( ) => {
       .catch(err => {
         setRedirectToLogin(true)
       })
-  })
+  }, [])
 
-  async function getMatches(userID) {
-    await API.graphql({ query: listMatchs, variables: {id: userID.toString() }}).then(response => {
-      var matches = response.data.listMatchs.items;
-      if(matches.length == 0){
-        // CHANGE BACK TO FALSE AFTER DOING MATCH THING
-        setMatches(() => ({ ...matches, matches: false}))
-      }
-      else {
-        setMatches(() => ({ ...matches, matches: matches}))
-      }
-    }).catch(err => {
-      console.log(err);
-    });
+  async function getMatches(userID, type){
+    var userid = userID.toString();
+    if(type === false){
+      // if this works, have to add a thing for company vs student
+      await API.graphql({ query: listMatchs, variables: {company: userid}}).then(matchesInfo => {
+        var matchInfo = matchesInfo.data.listMatchs.items;
+        (async () => {
+        var allMatchesData = []
+        for(var key in matchInfo){
+          // user is a student and will view company match data
+            var matchID = matchInfo[key].company
+              var matchDetails = await getMatchInfo(matchID)
+              var userData = matchDetails.data.getUser
+              var matchData = matchInfo[key]
+
+              var displayData = {
+                name: userData.firstName + " " + userData.lastName,
+                company: userData.organization,
+                position: userData.position,
+                loc: userData.located,
+                upcoming_meeting: matchData.upcoming_meeting,
+                messages: matchData.messages,
+                status_flag: matchData.status_flag
+              }
+              allMatchesData.push(displayData)
+          }
+          setMatches(allMatchesData)
+        })()
+      }).catch(err => {
+        console.log(err)
+      })
+    } else {
+      console.log("company")
+      await API.graphql({ query: listMatchs, variables: {student: userid}}).then(matchesInfo => {
+        var matchInfo = matchesInfo.data.listMatchs.items;
+        (async () => {
+        var allMatchesData = []
+        for(var key in matchInfo){
+          // user is a company and will view student data
+            var matchID = matchInfo[key].student
+              var matchDetails = await getMatchInfo(matchID)
+              var userData = matchDetails.data.getUser
+              var matchData = matchInfo[key]
+
+              var displayData = {
+                name: userData.firstName + " " + userData.lastName,
+                school: userData.organization,
+                degree: userData.degree,
+                major: userData.major,
+                upcoming_meeting: matchData.upcoming_meeting,
+                messages: matchData.messages,
+                status_flag: matchData.status_flag
+              }
+              allMatchesData.push(displayData)
+          }
+          setMatches(allMatchesData)
+        })()
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+
+  }
+
+  async function getMatchInfo(matchID){
+    // make a function with a lot less info (not necessary to get whole user here)
+    return await API.graphql({ query: getUser, variables: {id: matchID}})
   }
 
   var upcoming = []
@@ -53,33 +119,57 @@ const Dashboard = ( ) => {
   var active = []
   var archived = []
 
-  if(matches.matches != false){
-    for(var key in matches.matches){
-      if(matches.matches[key].status_flag == "upcoming")
-        upcoming.push(matches.matches[key])
-      if(matches.matches[key].status_flag == "pending")
-        upcoming.push(matches.matches[key])
-      if(matches.matches[key].status_flag == "active")
-        upcoming.push(matches.matches[key])
-      if(matches.matches[key].status_flag == "archived")
-        upcoming.push(matches.matches[key])
+// should be in a function with state changes but I really don't wanna do that
+//  async function parseMatchType(){
+    if(matches.length != 0){
+      for(var key in matches){
+        console.log(matches[key].status_flag)
+        if(matches[key].status_flag == "upcoming"){
+          if(userType === false)
+            createCompMatchBox("upcoming", upcoming, matches[key])
+          else
+            createStudMatchBox("upcoming", upcoming, matches[key])
+        }
+        if(matches[key].status_flag == "pending"){
+          if(userType === false)
+            createCompMatchBox("pending", pending, matches[key])
+          else
+            createStudMatchBox("pending", pending, matches[key])
+        }
+        if(matches[key].status_flag == "active"){
+          if(userType === false)
+            createCompMatchBox("active", active, matches[key])
+          else
+            createStudMatchBox("active", active, matches[key])
+        }
+        if(matches[key].status_flag == "archived"){
+          if(userType === false)
+            createCompMatchBox("archived", archived, matches[key])
+          else
+            createStudMatchBox("archived", archived, matches[key])
+        }
+      }
     }
+//  }
+
+  function createCompMatchBox(matchType, matchTypeArr, matchInfo){
+    var name = matchInfo.name
+    var compPos = matchInfo.position + ", " + matchInfo.company
+    var loc = matchInfo.loc
+    var meeting = matchInfo.upcoming_meeting
+    matchTypeArr.push(
+        <DashboardMatch userType={userType} matchType={matchType} name={name} line2={compPos} line3={loc} meeting={meeting}/>
+    )
   }
 
-
-  // unsure how we're flagging student vs student
-  async function getUserType(userID){
-    await API.graphql({ query: getUser, variables: {id: userID.toString() }}).then(response => {
-      var type = response.data.getUser.__typename;
-      if(type == "Company" ){
-        setUserType(true)
-      }
-      else {
-        setUserType(false)
-      }
-    }).catch(err => {
-      console.log(err);
-    });
+  function createStudMatchBox(matchType, matchTypeArr, matchInfo){
+    var name = matchInfo.name
+    var degreeMaj = matchInfo.degree + ", " + matchInfo.major
+    var school = matchInfo.school
+    var meeting = matchInfo.upcoming_meeting
+    matchTypeArr.push(
+        <DashboardMatch userType={userType} matchType={matchType} name={name} line2={school} line3={degreeMaj} meeting={meeting}/>
+    )
   }
 
   return (
@@ -91,11 +181,20 @@ const Dashboard = ( ) => {
     }
     {
       redirectToLogin === false && (
-        <div className = "dashboard-body">
+        <div className = "internal-body">
         <MainNav />
         <SideNav />
           <div className="connections-div">
-            <p className="dashboard-title"> Connections </p>
+          {
+            userType === false && (
+              <p className="dashboard-title" id="stud-conn"> Connections </p>
+            )
+          }
+          {
+            userType === true && (
+              <p className="dashboard-title" id="comp-conn"> Connections </p>
+            )
+          }
             <div className="connections-elem">
             <Tabs>
               <div label="Upcoming">
@@ -105,10 +204,8 @@ const Dashboard = ( ) => {
                 )
               }
               {
-                upcoming.length != 0 && (
-                    // loop through all upcoming matches and display upcoming component
-                    // photo here ? not sure if you can pass that :/
-                    <DashboardMatch userType={userType} matchType="upcoming" name="Name Holder" school="School Holder" degree="Degree Holder" major="Major Holder" meeting="{matches.matches.upcoming_meeting}" />
+                upcoming.length !== 0 && (
+                    <div> { upcoming } </div>
                 )
               }
               </div>
@@ -119,10 +216,8 @@ const Dashboard = ( ) => {
                 )
               }
               {
-                pending.length != 0 && (
-                    // loop through all upcoming matches and display upcoming component
-                    // photo here ? not sure if you can pass that :/
-                    <DashboardMatch userType={userType} matchType="upcoming" name="Name Holder" school="School Holder" degree="Degree Holder" major="Major Holder" meeting="{matches.matches.upcoming_meeting}" />
+                pending.length !== 0 && (
+                  <div> { pending } </div>
                 )
               }
               </div>
@@ -133,10 +228,8 @@ const Dashboard = ( ) => {
                 )
               }
               {
-                active.length != 0 && (
-                    // loop through all upcoming matches and display upcoming component
-                    // photo here ? not sure if you can pass that :/
-                    <DashboardMatch userType={userType} matchType="upcoming" name="Name Holder" school="School Holder" degree="Degree Holder" major="Major Holder" meeting="{matches.matches.upcoming_meeting}" />
+                active.length !== 0 && (
+                  <div> { active } </div>
                 )
               }
               </div>
@@ -147,10 +240,8 @@ const Dashboard = ( ) => {
                 )
               }
               {
-                archived.length != 0 && (
-                    // loop through all upcoming matches and display upcoming component
-                    // photo here ? not sure if you can pass that :/
-                    <DashboardMatch userType={userType} matchType="upcoming" name="Name Holder" school="School Holder" degree="Degree Holder" major="Major Holder" meeting="{matches.matches.upcoming_meeting}" />
+                archived.length !== 0 && (
+                  <div> { archived } </div>
                 )
               }
               </div>
