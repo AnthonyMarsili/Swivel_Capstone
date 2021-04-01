@@ -51,6 +51,40 @@ const Dashboard = ( ) => {
       // if this works, have to add a thing for company vs student
       await API.graphql({ query: listMatchs, variables: {company: userid}}).then(matchesInfo => {
         var matchInfo = matchesInfo.data.listMatchs.items;
+<<<<<<< HEAD
+          (async () => {
+            try{
+
+          var allMatchesData = []
+          for(var key in matchInfo){
+            // user is a student and will view company match data
+              var matchID = matchInfo[key].company
+                var matchDetails = await getMatchInfo(matchID)
+                var userData = matchDetails.data.getUser
+                var matchData = matchInfo[key]
+
+                var displayData = {
+                  name: userData.firstName + " " + userData.lastName,
+                  company: userData.organization,
+                  position: userData.position,
+                  loc: userData.located,
+                  upcoming_meeting: matchData.upcoming_meeting,
+                  messages: matchData.messages,
+                  status_flag: matchData.status_flag
+                }
+                allMatchesData.push(displayData)
+            }
+            setMatches(allMatchesData)
+        } catch (err){
+          console.log(err)
+        }
+
+        if(allMatchesData.length === 0){
+          setMatches([])
+        }
+          })()
+
+=======
         (async () => {
         var allMatchesData = []
         console.log(matchInfo)
@@ -60,20 +94,8 @@ const Dashboard = ( ) => {
               var matchDetails = await getMatchInfo(matchID)
               var userData = matchDetails.data.getUser
               var matchData = matchInfo[key]
+>>>>>>> bda955206acb94af0ed6143ce2fabbfa81576263
 
-              var displayData = {
-                name: userData.firstName + " " + userData.lastName,
-                company: userData.organization,
-                position: userData.position,
-                loc: userData.located,
-                upcoming_meeting: matchData.upcoming_meeting,
-                messages: matchData.messages,
-                status_flag: matchData.status_flag
-              }
-              allMatchesData.push(displayData)
-          }
-          setMatches(allMatchesData)
-        })()
       }).catch(err => {
         console.log(err)
       })
@@ -81,29 +103,38 @@ const Dashboard = ( ) => {
       console.log("company")
       await API.graphql({ query: listMatchs, variables: {student: userid}}).then(matchesInfo => {
         var matchInfo = matchesInfo.data.listMatchs.items;
-        (async () => {
-        var allMatchesData = []
-        for(var key in matchInfo){
-          // user is a company and will view student data
-            var matchID = matchInfo[key].student
-              var matchDetails = await getMatchInfo(matchID)
-              var userData = matchDetails.data.getUser
-              var matchData = matchInfo[key]
+          (async () => {
+            try {
+          var allMatchesData = []
+          for(var key in matchInfo){
+            // user is a company and will view student data
+              var matchID = matchInfo[key].student
+                var matchDetails = await getMatchInfo(matchID)
+                var userData = matchDetails.data.getUser
+                var matchData = matchInfo[key]
 
-              var displayData = {
-                name: userData.firstName + " " + userData.lastName,
-                school: userData.organization,
-                degree: userData.degree,
-                major: userData.major,
-                upcoming_meeting: matchData.upcoming_meeting,
-                messages: matchData.messages,
-                status_flag: matchData.status_flag,
-                email: matchData.email
-              }
-              allMatchesData.push(displayData)
+                var displayData = {
+                  name: userData.firstName + " " + userData.lastName,
+                  school: userData.organization,
+                  degree: userData.degree,
+                  major: userData.major,
+                  upcoming_meeting: matchData.upcoming_meeting,
+                  messages: matchData.messages,
+                  status_flag: matchData.status_flag,
+                  email: matchData.email
+                }
+                allMatchesData.push(displayData)
+            }
+            setMatches(allMatchesData)
+          } catch(err) {
+            console.log(err)
           }
-          setMatches(allMatchesData)
-        })()
+
+          if(allMatchesData.length === 0){
+            setMatches([])
+          }
+          })()
+
       }).catch(err => {
         console.log(err)
       })

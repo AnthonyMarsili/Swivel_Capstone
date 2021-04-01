@@ -41,13 +41,17 @@ const SetupProfile = () => {
     if(e === "benefits"){
       updateForm(() => ({ ...form, benefits: benList }))
     } else if(e === "skills"){
-      updateForm(() => ({ ...form, tech_skills: techList }))
-      updateForm(() => ({ ...form, soft_skills: softList }))
-      updateForm(() => ({ ...form, employment_type: empList }))
+      updateForm(() => ({ ...form, tech_skills: techList, soft_skills: softList, employment_type: empList }))
+      console.log(form.tech_skills)
+
     } else {
+      try{
       e.persist()
       //if(e.target.name === "")
       updateForm(() => ({ ...form, [e.target.name]: e.target.value }))
+    } catch(err){
+      console.log(err)
+    }
     }
 
   }
@@ -122,8 +126,10 @@ const SetupProfile = () => {
   function updateList(listType, listVal){
       if(listType === "benefits")
         benList.push(listVal)
-      else if(listType === "techSkills")
+      else if(listType === "techSkills"){
         techList.push(listVal)
+        console.log(techList)
+      }
       else if(listType === "softSkills")
         softList.push(listVal)
       else if(listType === "employmentType")
@@ -142,8 +148,10 @@ const SetupProfile = () => {
         (async () => {
           var allUsersIDs = []
           for(var key in usersData){
-            allUsersIDs.push(usersData[key].id)
+            if(usersData[key].typeOfUser === "Student")
+              allUsersIDs.push(usersData[key].id)
           }
+          console.log(techList)
           await API.graphql({ query: updateUser, variables: {input: {id: userID,
                                                                       position: form.position,
                                                                       company_size: form.company_size,
@@ -177,7 +185,8 @@ const SetupProfile = () => {
         (async () => {
           var allUsersIDs = []
           for(var key in usersData){
-            allUsersIDs.push(usersData[key].id)
+            if(usersData[key].typeOfUser === "Company")
+              allUsersIDs.push(usersData[key].id)
           }
 
           await API.graphql({ query: updateUser, variables: {input: {id: userID,
@@ -625,62 +634,62 @@ const SetupProfile = () => {
               <table className = "setup-table">
                 <tr>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Web Dev")} id = "web-skill">Web Dev</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Web Dev")} id = "web-skill">Web Dev</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Mobile Dev")} id = "mobile-skill">Mobile Dev</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Mobile Dev")} id = "mobile-skill">Mobile Dev</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "AI")} id = "ai-skill">AI</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "AI")} id = "ai-skill">AI</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Front End")} id = "front-skill">Front End</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Front End")} id = "front-skill">Front End</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Back End")} id = "back-skill">Back End</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Back End")} id = "back-skill">Back End</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Cloud Computing")} id = "cloud-computing">Cloud Computing</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Cloud Computing")} id = "cloud-computing">Cloud Computing</button>
                   </td>
                 </tr>
                 <tr>
                 <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Data Science")} id = "data-sci">Data Science</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Data Science")} id = "data-sci">Data Science</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "DevOps")} id = "dev-op">DevOps</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "DevOps")} id = "dev-op">DevOps</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Virtualization")} id = "virtual">Virtualization</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Virtualization")} id = "virtual">Virtualization</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Blockchain")} id = "blockchain">Blockchain</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Blockchain")} id = "blockchain">Blockchain</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Software Architecture")} id = "softarc">Software Architecture</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Software Architecture")} id = "softarc">Software Architecture</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Unit Testing")} id = "unit-test">Unit Testing</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Unit Testing")} id = "unit-test">Unit Testing</button>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Operating Systems")} id = "oper-skill">Operating Systems</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Operating Systems")} id = "oper-skill">Operating Systems</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Network Security")} id = "network-skill">Network Security</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Network Security")} id = "network-skill">Network Security</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "IoT")} id = "IOT-skill">IOT</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "IoT")} id = "IOT-skill">IOT</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "AR/VR")} id = "AR-skill">AR/VR</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "AR/VR")} id = "AR-skill">AR/VR</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Quality Assurance")} id = "quality-skill">Quality Assurance</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Quality Assurance")} id = "quality-skill">Quality Assurance</button>
                   </td>
                   <td>
-                    <button className="skill-btn" onChange= {() => updateList("techSkills", "Command Line")} id = "command-skill">Command Line</button>
+                    <button className="skill-btn" onClick= {() => updateList("techSkills", "Command Line")} id = "command-skill">Command Line</button>
                   </td>
                 </tr>
                 </table>
@@ -688,62 +697,62 @@ const SetupProfile = () => {
                 <table className = "setup-table">
                   <tr>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Electronic Eng")} id = "Electronic-skill">Electronic Eng</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Electronic Eng")} id = "Electronic-skill">Electronic Eng</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Electric Eng")} id = "Electric-skill">Electric Eng</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Electric Eng")} id = "Electric-skill">Electric Eng</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Linear Algebra")} id = "linear-skill">Linear Algebra</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Linear Algebra")} id = "linear-skill">Linear Algebra</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Mathematics")} id = "math-skill">Mathematics</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Mathematics")} id = "math-skill">Mathematics</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Robotics")} id = "Robot-skill">Robotics</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Robotics")} id = "Robot-skill">Robotics</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "CAD")} id = "CAD-skill">CAD</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Circuitry")} id = "Circuit-skill">Circuitry</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "CNC")} id = "CNC-skill">CNC</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Machining")} id = "Machine-skill">Machining</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Fluid Modelling")} id = "Fluid-skill">Fluid Modelling</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Sensoring")} id = "Sensor-skill">Sensoring</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "MATLAB")} id = "MATLAB-skill">MATLAB</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "CAD")} id = "CAD-skill">CAD</button>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Advanced Physics")} id = "advance-skill">Advanced Physics</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Circuitry")} id = "Circuit-skill">Circuitry</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Nanotechnology")} id = "nano-skill">Nanotechnology</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "CNC")} id = "CNC-skill">CNC</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Infrastructural Design")} id = "infra-skill">Infrastructural Design</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Machining")} id = "Machine-skill">Machining</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Inventory Management")} id = "Inventory-skill">Inventory Management</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Fluid Modelling")} id = "Fluid-skill">Fluid Modelling</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Equipment Diagnostics")} id = "equipment-skill">Equipment Diagnostics</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Sensoring")} id = "Sensor-skill">Sensoring</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Troubleshooting")} id = "trouble-skill">Troubleshooting</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "MATLAB")} id = "MATLAB-skill">MATLAB</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Advanced Physics")} id = "advance-skill">Advanced Physics</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Nanotechnology")} id = "nano-skill">Nanotechnology</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Infrastructural Design")} id = "infra-skill">Infrastructural Design</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Inventory Management")} id = "Inventory-skill">Inventory Management</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Equipment Diagnostics")} id = "equipment-skill">Equipment Diagnostics</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Troubleshooting")} id = "trouble-skill">Troubleshooting</button>
                     </td>
                   </tr>
                 </table>
@@ -752,53 +761,53 @@ const SetupProfile = () => {
                 <table className = "setup-table">
                   <tr>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "AI")} id = "sales-skill">Salesforce/CRMs</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "AI")} id = "sales-skill">Salesforce/CRMs</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Online Accounting")} id = "online-skill">Online Accounting</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Online Accounting")} id = "online-skill">Online Accounting</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Statistics")} id = "stat-skill">Statistics</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Statistics")} id = "stat-skill">Statistics</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "eCommerce")} id = "ecomm-skill">eCommerce</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "eCommerce")} id = "ecomm-skill">eCommerce</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Analytical Reasoning")} id = "anal-skill">Analytical Reasoning</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Social Media")} id = "Social-skill">Social Media</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Sales")} id = "Sales-skill">Sales</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "AI")} id = "AB-skill">A/B Testing</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Mind Mapping")} id = "Mind-skill">Mind Mapping</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Survey Software")} id = "Survey-skill">Survey Software</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Analytical Reasoning")} id = "anal-skill">Analytical Reasoning</button>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Data Analysis")} id = "Data-skill">Data Analysis</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Social Media")} id = "Social-skill">Social Media</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Project Management")} id = "Project-skill">Project Management</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Sales")} id = "Sales-skill">Sales</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "SEO/SEM")} id = "SEO-skill">SEO/SEM</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "AI")} id = "AB-skill">A/B Testing</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Business Analyst")} id = "business-skill">Business Analysis</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Mind Mapping")} id = "Mind-skill">Mind Mapping</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "CMS")} id = "CMS-skill">CMS</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Survey Software")} id = "Survey-skill">Survey Software</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Data Analysis")} id = "Data-skill">Data Analysis</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Project Management")} id = "Project-skill">Project Management</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "SEO/SEM")} id = "SEO-skill">SEO/SEM</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Business Analyst")} id = "business-skill">Business Analysis</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "CMS")} id = "CMS-skill">CMS</button>
                     </td>
                   </tr>
                 </table>
@@ -807,30 +816,30 @@ const SetupProfile = () => {
                 <table className = "setup-table">
                   <tr>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "UI")} id = "UI-skill">UI</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "UI")} id = "UI-skill">UI</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "UX")} id = "UX-skill">UX</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "UX")} id = "UX-skill">UX</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Photoshop")} id = "photoshop-skill">Photoshop</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Photoshop")} id = "photoshop-skill">Photoshop</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "InDesign")} id = "Indesign-skill">InDesign</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "InDesign")} id = "Indesign-skill">InDesign</button>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Wireframing")} id = "wire-skill">Wireframing</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Wireframing")} id = "wire-skill">Wireframing</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Video Production")} id = "video-skill">Video Production</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Video Production")} id = "video-skill">Video Production</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Brand Development")} id = "brand-skill">Brand Development</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Brand Development")} id = "brand-skill">Brand Development</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "Illustrator")} id = "illus-skill">Illustrator</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "Illustrator")} id = "illus-skill">Illustrator</button>
                     </td>
                   </tr>
                 </table>
@@ -849,53 +858,53 @@ const SetupProfile = () => {
                 <table className = "setup-table">
                   <tr>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("techSkills", "AI")} id = "leader-skill">Leadership</button>
+                      <button className="skill-btn" onClick= {() => updateList("techSkills", "AI")} id = "leader-skill">Leadership</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Adaptability")} id = "adapt-skill">Adaptability</button>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Adaptability")} id = "adapt-skill">Adaptability</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Creativity")} id = "create-skill">Creativity</button>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Creativity")} id = "create-skill">Creativity</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Communication")} id = "comm-skill">Communication</button>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Communication")} id = "comm-skill">Communication</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Execution")} id = "execution-skill">Execution</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Detail Oriented")} id = "detail-skill">Detail Oriented</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Critical Thinking")} id = "critical-skill">Critical Thinking</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Decision Making")} id = "decision-skill">Decision Making</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Persuasion")} id = "persua-skill">Persuasion</button>
-                    </td>
-                    <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Collaboration")} id = "collab-skill">Collaboration</button>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Execution")} id = "execution-skill">Execution</button>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Organization")} id = "organ-skill">Organization</button>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Detail Oriented")} id = "detail-skill">Detail Oriented</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Conflict Resolution")} id = "conflict-skill">Conflict Resolution</button>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Critical Thinking")} id = "critical-skill">Critical Thinking</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Emotional Intelligence")} id = "emotional-skill">Emotional Intelligence</button>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Decision Making")} id = "decision-skill">Decision Making</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Open-mindedness")} id = "open-skill">Open-mindedness</button>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Persuasion")} id = "persua-skill">Persuasion</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("softSkills", "Self-starter")} id = "self-skill">Self-starter</button>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Collaboration")} id = "collab-skill">Collaboration</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Organization")} id = "organ-skill">Organization</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Conflict Resolution")} id = "conflict-skill">Conflict Resolution</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Emotional Intelligence")} id = "emotional-skill">Emotional Intelligence</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Open-mindedness")} id = "open-skill">Open-mindedness</button>
+                    </td>
+                    <td>
+                      <button className="skill-btn" onClick= {() => updateList("softSkills", "Self-starter")} id = "self-skill">Self-starter</button>
                     </td>
                   </tr>
                 </table>
@@ -905,13 +914,13 @@ const SetupProfile = () => {
                 <table className = "setup-table">
                   <tr>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("employmentType", "Full Time")} id = "full-time">Full Time</button>
+                      <button className="skill-btn" onClick= {() => updateList("employmentType", "Full Time")} id = "full-time">Full Time</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("employmentType", "Internship/Co-op")} id = "intern">Internship/Co-op</button>
+                      <button className="skill-btn" onClick= {() => updateList("employmentType", "Internship/Co-op")} id = "intern">Internship/Co-op</button>
                     </td>
                     <td>
-                      <button className="skill-btn" onChange= {() => updateList("employmentType", "Contract Work")} id = "contract">Contract Work</button>
+                      <button className="skill-btn" onClick= {() => updateList("employmentType", "Contract Work")} id = "contract">Contract Work</button>
                     </td>
                   </tr>
                 </table>
@@ -964,8 +973,11 @@ const SetupProfile = () => {
                 )
               }
               <button className="setup-last" onClick = {() => OnClickStep3()}>←</button>
+              {
+                //<Link to="/dashboard" id = "finish-setup" onClick = {() => createInfo()} className="setup-next">→</Link>
+              }
+              <button id = "finish-setup" onClick = {() => createInfo()} className="setup-next">→</button>
 
-              <Link to="/dashboard" id = "finish-setup" onClick = {() => createInfo()} className="setup-next">→</Link>
 
             </div>
           )

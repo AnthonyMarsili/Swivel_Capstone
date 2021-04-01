@@ -5,12 +5,33 @@ import CalIcon from "../images/calIcon.png"
 
 import {NavLink} from 'react-router-dom'
 import { Auth, Hub } from 'aws-amplify'
+import React, { useState, useEffect } from 'react'
+
 
 const SideNav = () => {
+  const [userType, setUserType] = useState(true)
+  const [redirectToLogin, setRedirectToLogin] = useState(false)
+
+
+  useEffect(() => {
+    let isCancelled = false
+    Auth.currentSession()
+      .then(currUser => {
+        var userID = currUser['idToken']['payload']['sub']
+          if(currUser['idToken']['payload']['custom:student'] === '1')
+            setUserType(false)
+          else
+            setUserType(true)
+        return () => {
+          isCancelled = true
+        }
+       })
+      .catch(err => {
+        setRedirectToLogin(true)
+      })
+  }, [])
 
   // find userType
-  const userType = false
-
 
   var navId = "comp-nav"
   var navBtnId = "comp-nav-btn"

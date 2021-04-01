@@ -201,7 +201,7 @@ const CalendarComponent = ( ) => {
             <button className = "buttonBesideCal" onClick = {() => switchView()}>View Scheduled Meetings</button>
             <button
               className = "buttonBesideCal"
-              disabled = {btnDisabled}
+              //disabled = {btnDisabled}
               onClick = {() => submitAvailabilities()}>
               Submit Availabilities
             </button>
