@@ -140,6 +140,7 @@ async function cancel(){
               <p>Bio</p>
               <input className = "bio-box" name = "bio" onChange = {onChange} value = {userBio} type = "text"/>
               <button className="verifysave-btn" id = "submit-btn" onClick = {() => submitAttributes()}>Save Changes</button>
+              <button className="verifysave-btn" onClick = {() => cancel()}>Cancel</button>
             </div>
           </div>
         )

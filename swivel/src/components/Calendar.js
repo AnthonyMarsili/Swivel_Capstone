@@ -146,6 +146,12 @@ const CalendarComponent = ( ) => {
           setBtnDisabled(false)
         }
       }
+      else if(!response.data.getUser.availability && availabilities.length > 0) {
+        setBtnDisabled(false)
+      }
+      else {
+        setBtnDisabled(true)
+      }
     })
   }
 

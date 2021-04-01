@@ -51,6 +51,7 @@ const Dashboard = ( ) => {
       // if this works, have to add a thing for company vs student
       await API.graphql({ query: listMatchs, variables: {company: userid}}).then(matchesInfo => {
         var matchInfo = matchesInfo.data.listMatchs.items;
+<<<<<<< HEAD
           (async () => {
             try{
 
@@ -83,6 +84,17 @@ const Dashboard = ( ) => {
         }
           })()
 
+=======
+        (async () => {
+        var allMatchesData = []
+        console.log(matchInfo)
+        for(var key in matchInfo){
+          // user is a student and will view company match data
+            var matchID = matchInfo[key].company
+              var matchDetails = await getMatchInfo(matchID)
+              var userData = matchDetails.data.getUser
+              var matchData = matchInfo[key]
+>>>>>>> bda955206acb94af0ed6143ce2fabbfa81576263
 
       }).catch(err => {
         console.log(err)
