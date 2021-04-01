@@ -929,6 +929,7 @@ td {
   height: 82%;
   width: 76%;
   margin-top: 6.5%;
+  overflow-y: scroll;
   margin-left: 21%;
   background-color: white;
   box-shadow: 0px 2px 6px #0000000A;
@@ -1323,6 +1324,76 @@ td {
   cursor: pointer;
 }
 
+/* New Match */
+.new-match{
+  padding: 35%;
+  background-color: #e9e9f0;
+  position: absolute;
+  margin-left: -10%;
+  margin-top: -60%;
+  z-index: 3;
+}
+
+.new-match-div{
+  width: 40%;
+  position: absolute;
+  z-index: 4;
+  top: 40%;
+  box-shadow: 0px 10px 20px #00000029;
+  border-radius: 5px;
+  margin-left: -30%;
+  padding: 3%;
+  color: white;
+  text-align: center;
+}
+
+#new-stud-match{
+  background-color: var(--student-main);
+}
+
+#new-comp-match{
+  background-color: var(--student-main);
+}
+
+.match-pic{
+  width: 30%;
+  border-radius: 100%;
+}
+
+.end-img{
+  width: 25%;
+  margin-left: 45%;
+}
+
+.end-list{
+  margin-top: 15%
+}
+
+.end-message{
+  margin-left: 40%;
+}
+
+.name{
+  font-weight: bold;
+}
+
+.line1{
+  font-size: 12px;
+}
+
+.line2{
+  font-size: 12px;
+}
+
+.suggested-time{
+  display: inline-block;
+  padding: 2%;
+  margin: 1%;
+  border: none;
+  color: #4229C3;
+}
+/* Profile edit */
+
 .profileCurrent-div {
   display: inline-block;
   margin-left: 40%;
@@ -1333,4 +1404,83 @@ td {
   display: inline-block;
   margin-left: 40%;
   margin-top: 10%;
+}
+
+/* Setup profile */
+.setup-content{
+  margin-top: 3%;
+  text-align: center;
+}
+
+.step1-box{
+  width: 350px;
+  text-align: center;
+}
+
+#size-box{
+  width: 150px;
+}
+
+.setup-next{
+  padding: 10px 25px;
+  background-color: var(--company-main);
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.setup-next:hover{
+  cursor: pointer
+}
+
+.setup-last{
+  padding: 10px 25px;
+  background-color: white;
+  color: var(--company-main);
+  border: 1px solid var(--company-main);
+  border-radius: 5px;
+  margin-right: 1%;
+}
+
+.setup-last:hover{
+  cursor: pointer
+}
+
+.slider{
+  width: 250px;
+}
+
+.slidecontainer{
+  display: inline-block;
+  margin-right: 10%;
+}
+
+.setup-table{
+  width: 100%;
+}
+
+.skill-btn{
+  padding: 15%;
+  border: 3px solid var(--company-main);
+  border-radius: 5px;
+  background-color: white;
+}
+
+.skill-btn:hover{
+  cursor: pointer;
+  background-color: var(--company-main);
+  color: white;
+}
+
+.skill-btn:focus{
+  background-color: var(--company-main);
+  color: white;
+}
+
+td, th{
+  border: none
+}
+
+.setup-h3{
+  font-weight: bold;
 }

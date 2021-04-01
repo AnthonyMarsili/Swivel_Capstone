@@ -3,6 +3,8 @@ import SideNav from './SideNav'
 import MatchCard from './MatchCard'
 import NewMatch from './NewMatch'
 
+import EndImg from '../images/endlist.png'
+
 import { v1 as uuidv1 } from "uuid"
 import React, { useState, useEffect } from 'react'
 import Amplify, { API, Auth, Hub, graphqlOperation } from 'aws-amplify'
@@ -71,6 +73,8 @@ const Matching = ( ) => {
             console.log(err)
           })
         })()
+  } else {
+    setIndex(index+1)
   }
 
     setNewMatchFlag(false)
@@ -254,16 +258,28 @@ const Matching = ( ) => {
         <div className = "internal-body">
         <MainNav />
         <SideNav />
-          <div className="matching-div">
-          <MatchCard userType={userType} userInfo={prosUsers[index]} end={prosUsers.length} index={index}/>
-          <button className="pass" id={userType + "-pass"} onClick={() => passUser(prosUsers[index])} >Not Right Now.</button>
-          <button className="connect" id={userType + "-conn"} onClick={() => likeUser(prosUsers[index])} >Connect.</button>
-          {
-            newMatchFlag === true && (
-              <NewMatch userType={userType} userID={currUserInfo.data.getUser.id} userAvail={currUserInfo.data.getUser.availability} matchInfo={prosUsers[index]} finalizeMatch={finalizeMatch} />
-            )
-          }
-          </div>
+        {
+          prosUsers.length < index && (
+            <div className="matching-div">
+            <MatchCard userType={userType} userInfo={prosUsers[index]} end={prosUsers.length} index={index}/>
+            <button className="pass" id={userType + "-pass"} onClick={() => passUser(prosUsers[index])} >Not Right Now.</button>
+            <button className="connect" id={userType + "-conn"} onClick={() => likeUser(prosUsers[index])} >Connect.</button>
+            {
+              newMatchFlag === true && (
+                <NewMatch userType={userType} userID={currUserInfo.data.getUser.id} userAvail={currUserInfo.data.getUser.availability} matchInfo={prosUsers[index]} finalizeMatch={finalizeMatch} />
+              )
+            }
+            </div>
+          )
+        }
+        {
+          prosUsers.length >= index && (
+            <div className="end-list">
+              <p className="end-message"> You've reached the end! Come back later to see more users </p>
+              <img className="end-img" src={EndImg} alt="ending" />
+            </div>
+          )
+        }
         </div>
       )
     }

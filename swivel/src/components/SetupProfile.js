@@ -160,7 +160,8 @@ const SetupProfile = () => {
                                                                       employment_type: form.employment_type,
                                                                       liked: [""],
                                                                       skipped: [""],
-                                                                      notSeen: allUsersIDs
+                                                                      notSeen: allUsersIDs,
+                                                                      initialSetupDone: true
                                                                       }}}).then(response => {
             console.log("updated")
           }).catch(err => {
@@ -193,7 +194,8 @@ const SetupProfile = () => {
                                                                       special: form.special,
                                                                       liked: [""],
                                                                       skipped: [""],
-                                                                      notSeen: allUsersIDs
+                                                                      notSeen: allUsersIDs,
+                                                                      initialSetupDone: true
                                                                       }}}).then(response => {
             console.log("updated")
           }).catch(err => {
@@ -619,7 +621,7 @@ const SetupProfile = () => {
                   <p className = "setup-sub">What technical skills do you have?</p>
                 )
               }
-              <h3 className = "setup-h3">Computer Science</h3>
+              <p className = "setup-h3">Computer Science</p>
               <table className = "setup-table">
                 <tr>
                   <td>
@@ -682,7 +684,7 @@ const SetupProfile = () => {
                   </td>
                 </tr>
                 </table>
-                <h3 className = "setup-h3"> Engineering </h3>
+                <p className = "setup-h3"> Engineering </p>
                 <table className = "setup-table">
                   <tr>
                     <td>
@@ -746,7 +748,7 @@ const SetupProfile = () => {
                   </tr>
                 </table>
 
-                <h3 className = "setup-h3"> Commerce </h3>
+                <p className = "setup-h3"> Commerce </p>
                 <table className = "setup-table">
                   <tr>
                     <td>
@@ -801,7 +803,7 @@ const SetupProfile = () => {
                   </tr>
                 </table>
 
-                <h3 className = "setup-h3"> Design </h3>
+                <p className = "setup-h3"> Design </p>
                 <table className = "setup-table">
                   <tr>
                     <td>

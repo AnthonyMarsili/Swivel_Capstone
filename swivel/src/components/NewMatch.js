@@ -1,5 +1,5 @@
 // this is what will get rendered when there's a new upcoming match
-import PlaceholderImg from "../images/student/student2.jpeg"
+import PlaceholderImg from "../images/placeholder.png"
 
 import { v1 as uuidv1 } from "uuid"
 import React, { useState, useEffect } from 'react'
@@ -66,6 +66,7 @@ const NewMatches = ({ userType, userID, userAvail, matchInfo, finalizeMatch }) =
                 // only do the first 3 suggested
                 mutualAvail.length !== 0 && (
                   <div className="suggested">
+                  <p calssName="suggested-info"> Choose a time based on your mutal availability </p>
                     { availableTimes }
                   </div>
                 )
@@ -96,6 +97,7 @@ const NewMatches = ({ userType, userID, userAvail, matchInfo, finalizeMatch }) =
               // only do the first 3 suggested
               mutualAvail.length !== 0 && (
                 <div className="suggested">
+                <p calssName="suggested-info"> Choose a time based on your mutal availability </p>
                   { availableTimes }
                 </div>
               )
@@ -108,6 +110,8 @@ const NewMatches = ({ userType, userID, userAvail, matchInfo, finalizeMatch }) =
   }
   else if(matchNotSeenArr.includes(userID)){
     return finalizeMatch(newMatchID, companyUser, studentUser, new Date().toISOString(), "pending")
+  } else {
+    return finalizeMatch("", "", "", "", "noMatch")
   }
 }
 
