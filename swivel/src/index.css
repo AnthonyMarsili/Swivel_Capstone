@@ -1323,4 +1323,14 @@ td {
   cursor: pointer;
 }
 
-/* New match screen */
+.profileCurrent-div {
+  display: inline-block;
+  margin-left: 40%;
+  margin-top: 10%;
+}
+
+.profileEdit-div {
+  display: inline-block;
+  margin-left: 40%;
+  margin-top: 10%;
+}
