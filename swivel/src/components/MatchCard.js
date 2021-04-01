@@ -1,6 +1,6 @@
 //import ZoomLogoComp from "../images/company/zoomlogo.png"
 //import ZoomLogoStud from "../images/student/zoomlogo.png"
-import PlaceholderImg from "../images/student/student2.jpeg"
+import PlaceholderImg from "../images/placeholder.png"
 
 const MatchCard = ({ userType, userInfo, end, index }) => {
 
@@ -30,9 +30,15 @@ const MatchCard = ({ userType, userInfo, end, index }) => {
     var softList = softSkills.map(function(soft){
                   return <p className="softSkills" id={sSkillId}> { soft } </p>
                 })
+    var index = 0
+    var valueValue = ["Flexibility", "Diversity", "Innovation", "Customers", "Authenticity", "Accountability", "Sustainability", "Purpose", "Quality", "Curiosity", "Generosity", "Collaboration"]
 
     var valueList = values.map(function(val){
-                  return <p className="valueClass" id={tSkillId}> { val } </p>
+                // only show most valued attributes
+                if(val > 7){
+                  return <p className="valueClass" id={tSkillId}> { valueValue } </p>
+                }
+                index += 1
                 })
 
     var benefitList = benefits.map(function(ben){
