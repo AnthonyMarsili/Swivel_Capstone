@@ -53,6 +53,7 @@ const Dashboard = ( ) => {
         var matchInfo = matchesInfo.data.listMatchs.items;
         (async () => {
         var allMatchesData = []
+        console.log(matchInfo)
         for(var key in matchInfo){
           // user is a student and will view company match data
             var matchID = matchInfo[key].company

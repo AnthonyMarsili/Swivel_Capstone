@@ -1080,12 +1080,6 @@ td {
   font-size: 14px;
 }
 
-#calendarOnScreen {
-  position: absolute;
-  left: 40%;
-  top: 25%;
-}
-
 /* Matching screen */
 .matching-div{
   height: 99%;
@@ -1483,4 +1477,14 @@ td, th{
 
 .setup-h3{
   font-weight: bold;
+}
+
+#calendarOnScreen {
+  display: inline-block;
+  margin-left: 25%;
+}
+
+#sectionBesideCal {
+  display: inline-block;
+  margin-left: 25%;
 }
