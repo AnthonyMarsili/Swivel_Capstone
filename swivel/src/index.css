@@ -1405,3 +1405,82 @@ td {
   margin-left: 40%;
   margin-top: 10%;
 }
+
+/* Setup profile */
+.setup-content{
+  margin-top: 3%;
+  text-align: center;
+}
+
+.step1-box{
+  width: 350px;
+  text-align: center;
+}
+
+#size-box{
+  width: 150px;
+}
+
+.setup-next{
+  padding: 10px 25px;
+  background-color: var(--company-main);
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.setup-next:hover{
+  cursor: pointer
+}
+
+.setup-last{
+  padding: 10px 25px;
+  background-color: white;
+  color: var(--company-main);
+  border: 1px solid var(--company-main);
+  border-radius: 5px;
+  margin-right: 1%;
+}
+
+.setup-last:hover{
+  cursor: pointer
+}
+
+.slider{
+  width: 250px;
+}
+
+.slidecontainer{
+  display: inline-block;
+  margin-right: 10%;
+}
+
+.setup-table{
+  width: 100%;
+}
+
+.skill-btn{
+  padding: 15%;
+  border: 3px solid var(--company-main);
+  border-radius: 5px;
+  background-color: white;
+}
+
+.skill-btn:hover{
+  cursor: pointer;
+  background-color: var(--company-main);
+  color: white;
+}
+
+.skill-btn:focus{
+  background-color: var(--company-main);
+  color: white;
+}
+
+td, th{
+  border: none
+}
+
+.setup-h3{
+  font-weight: bold;
+}
