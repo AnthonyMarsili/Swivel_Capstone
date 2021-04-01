@@ -1342,3 +1342,15 @@ td {
 .connect:hover{
   cursor: pointer;
 }
+
+.profileCurrent-div {
+  display: inline-block;
+  margin-left: 40%;
+  margin-top: 10%;
+}
+
+.profileEdit-div {
+  display: inline-block;
+  margin-left: 40%;
+  margin-top: 10%;
+}

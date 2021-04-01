@@ -17,8 +17,8 @@ const Profile = ( ) => {
   const [userBio, setBio] = useState('') // unsure because one for student and about for company
   const [userAbout, setAbout] = useState('')
   const [userType, setUserType] = useState(false)
-  
-  
+
+
   useEffect(() => {
     console.log("hola")
     Auth.currentSession()
@@ -34,22 +34,22 @@ const Profile = ( ) => {
 
   function onChange(e) {
     e.persist()
-    if (e.target.name === 'firstName'){ 
+    if (e.target.name === 'firstName'){
       setFirstName(e.target.value)
     }
-    if (e.target.name === 'lastName'){ 
+    if (e.target.name === 'lastName'){
       setLastName(e.target.value)
     }
-    if (e.target.name === 'email'){ 
+    if (e.target.name === 'email'){
       setEmail(e.target.value)
     }
-    if (userType === false) {//false for student
-      if (e.target.name === 'bio'){ 
+    if (userType === 'Student') {//false for student
+      if (e.target.name === 'bio'){
         setBio(e.target.value)
       }
     }
     else {
-      if (e.target.name === 'about'){ 
+      if (e.target.name === 'about'){
         setAbout(e.target.value)
       }
     }
@@ -81,10 +81,9 @@ const Profile = ( ) => {
   }
 
   async function submitAttributes() {
-    await API.graphql({ query: updateUser, variables: {input: {id: userID, firstName: userFirstName, lastName: userLastName, email: userEmail, bio: userBio, about: userAbout }}}).then(response => {
+    await API.graphql({ query: updateUser, variables: {input: {id: userID, firstName: userFirstName, lastName: userLastName, bio: userBio, about: userAbout }}}).then(response => {
      console.log('updated user profile')
     })
-    window.location.reload()
     setEdit(false)
   }
 
@@ -105,28 +104,41 @@ async function cancel(){
         editing === false && (
           <div className="profileCurrent-div">
             <h1 className="comp-heading1">Your Profile</h1>
-            <p>some info displayed from the variables userXXX </p> 
-            <p>some more info</p>
-            <p>EVEN MORE INFO</p>
+            <p>{userFirstName} {userLastName}</p>
+            <p>{userEmail}</p>
+            <p>{userBio}</p>
+            <p>{userAbout}</p>
             <button className="edit-btn" id = "submit-btn" onClick = {() => editAttributes()}>Edit Profile</button>
           </div>
         )
       }
       {
-        editing === true && (
+        editing === true && userType === 'Company' && (
           <div className="profileEdit-div">
             <h1 className="comp-heading1" id="verify-heading"> Edit Your Profile. </h1>
             <div className="edit-profile">
-              <p innerHTML = {userFirstName}></p>
-              <input className = "firstName-box" name = 'firstName' onChange = {onChange} type="text"/>
+              <p>First Name</p>
+              <input className = "firstName-box" name = 'firstName' onChange = {onChange} value = {userFirstName} type="text"/>
               <p>Last Name</p>
-              <input className = "lastName-box" name = "lastName" onChange = {onChange} type = "text"/>
-              <p>Email</p>
-              <input className = "email-box" name = 'email' onChange = {onChange} type="text"/>
-              <p>Bio</p>
-              <input className = "bio-box" name = "bio" onChange = {onChange} type = "text"/>
+              <input className = "lastName-box" name = "lastName" onChange = {onChange} value = {userLastName} type = "text"/>
               <p>About</p>
-              <input className = "about-box" name = 'about' onChange = {onChange} type="text"/>
+              <input className = "about-box" name = 'about' onChange = {onChange} value = {userAbout} type="text"/>
+              <button className="verifysave-btn" id = "submit-btn" onClick = {() => submitAttributes()}>Save Changes</button>
+            </div>
+          </div>
+        )
+      }
+      {
+        editing === true && userType === 'Student' && (
+          <div className="profileEdit-div">
+            <h1 className="comp-heading1" id="verify-heading"> Edit Your Profile. </h1>
+            <div className="edit-profile">
+              <p>First Name</p>
+              <input className = "firstName-box" name = 'firstName' onChange = {onChange} value = {userFirstName} type="text"/>
+              <p>Last Name</p>
+              <input className = "lastName-box" name = "lastName" onChange = {onChange} value = {userLastName} type = "text"/>
+              <p>Bio</p>
+              <input className = "bio-box" name = "bio" onChange = {onChange} value = {userBio} type = "text"/>
               <button className="verifysave-btn" id = "submit-btn" onClick = {() => submitAttributes()}>Save Changes</button>
             </div>
           </div>

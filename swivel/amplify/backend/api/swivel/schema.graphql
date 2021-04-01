@@ -32,7 +32,7 @@ type User @model {
 	highlights: [String]
 	special: String
 	resume: [String!]
-	bio: [String!]
+	bio: String
 	liked: [String]
 	skipped: [String]
 	notSeen: [String]
