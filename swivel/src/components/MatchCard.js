@@ -33,10 +33,12 @@ const MatchCard = ({ userType, userInfo, end, index }) => {
     var index = 0
     var valueValue = ["Flexibility", "Diversity", "Innovation", "Customers", "Authenticity", "Accountability", "Sustainability", "Purpose", "Quality", "Curiosity", "Generosity", "Collaboration"]
 
+    console.log(values)
     var valueList = values.map(function(val){
                 // only show most valued attributes
                 if(val > 7){
-                  return <p className="valueClass" id={tSkillId}> { valueValue } </p>
+                  index += 1
+                  return <p className="valueClass" id={tSkillId}> { valueValue[index] } </p>
                 }
                 index += 1
                 })
@@ -50,12 +52,7 @@ const MatchCard = ({ userType, userInfo, end, index }) => {
   return (
     <div className="matchcard-box">
     {
-      index >= end && (
-        <p> End of List </p>
-      )
-    }
-    {
-      index < end && (
+      //index > end && (
         <div className="matching">
         {
           userType === false && (
@@ -104,7 +101,7 @@ const MatchCard = ({ userType, userInfo, end, index }) => {
           )
         }
         </div>
-      )
+      //)
     }
     </div>
   )

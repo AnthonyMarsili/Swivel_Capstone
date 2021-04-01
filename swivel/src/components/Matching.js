@@ -116,6 +116,7 @@ const Matching = ( ) => {
       for(var id in notSeenIds){
         await API.graphql({ query: getUser, variables: {id: notSeenIds[id]}}).then(prosUserData => {
           var userData = prosUserData.data.getUser
+          console.log(userData.id)
           if(type == false){
             // user is student - will view company
             var displayData = {
@@ -207,13 +208,13 @@ const Matching = ( ) => {
       skippedArr.push(matchID)
 
     //this works, i just don't wanna have to keep updating it manually
-      /*(async () => {
+    (async () => {
         await API.graphql({ query: updateUser, variables: {input: {id: currUserData.id, notSeen: notSeenArr, skipped: skippedArr}}}).then(response => {
           console.log("updated")
         }).catch(err => {
           console.log(err)
         })
-      })()*/
+      })()
     setIndex(index+1)
   }
 
@@ -236,13 +237,13 @@ const Matching = ( ) => {
       likedArr.push(matchID)
 
     //this works, i just don't wanna have to keep updating it manually
-      /*(async () => {
-        await API.graphql({ query: updateUser, variables: {input: {id: currUserData.id, notSeen: notSeenArr, skipped: skippedArr}}}).then(response => {
+    (async () => {
+        await API.graphql({ query: updateUser, variables: {input: {id: currUserData.id, notSeen: notSeenArr, liked: likedArr}}}).then(response => {
           console.log("updated")
         }).catch(err => {
           console.log(err)
         })
-      })()*/
+      })()
     setIndex(index+1)
   }
 
@@ -259,7 +260,7 @@ const Matching = ( ) => {
         <MainNav />
         <SideNav />
         {
-          prosUsers.length < index && (
+          prosUsers.length > index && (
             <div className="matching-div">
             <MatchCard userType={userType} userInfo={prosUsers[index]} end={prosUsers.length} index={index}/>
             <button className="pass" id={userType + "-pass"} onClick={() => passUser(prosUsers[index])} >Not Right Now.</button>
@@ -273,7 +274,7 @@ const Matching = ( ) => {
           )
         }
         {
-          prosUsers.length >= index && (
+          prosUsers.length <= index && (
             <div className="end-list">
               <p className="end-message"> You've reached the end! Come back later to see more users </p>
               <img className="end-img" src={EndImg} alt="ending" />

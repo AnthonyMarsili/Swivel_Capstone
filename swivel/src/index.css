@@ -1082,8 +1082,34 @@ td {
 
 #calendarOnScreen {
   position: absolute;
-  left: 40%;
-  top: 25%;
+  left: 23%;
+  top: 15%;
+  padding-bottom: 5%;
+}
+
+#sectionBesideCal{
+  width: 10%;
+  position: absolute;
+  z-index: 10;
+  margin-top: 15%;
+  margin-left: 82%;
+  display: inline-block;
+}
+
+.buttonBesideCal{
+  /*width: 50%;*/
+  border: 2px solid var(--company-main);
+  border-radius: 5px;
+  margin-bottom: 10%;
+  background-color: white;
+  color: var(--company-main)
+}
+
+.buttonBesideCal:hover{
+  /*width: 50%;*/
+  cursor: pointer;
+  color: white;
+  background-color: var(--company-main)
 }
 
 /* Matching screen */
